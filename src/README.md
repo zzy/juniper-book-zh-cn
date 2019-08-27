@@ -1,27 +1,19 @@
-# Ray最佳实践指南
+# Juniper 中文手册（同步最新开发版）
 
-The Hitchhiker’s Guide to Ray
+[Juniper 中文手册（同步最新开发版）-https://juniper.budshome.com](https://juniper.budshome.com)，内容译自 [graphql-rust/juniper 官方文档](https://github.com/graphql-rust/juniper/tree/master/docs/book)。
 
 ------
 
-您好！欢迎来到《Ray最佳实践指南》。
+## 声明
 
-这份人工编写的指南旨在为Ray初学者和专家提供一个关于Ray安装、配置、和日常使用的最佳实践手册。
+水平有限，错漏难免，欢迎指教；或请发 [issue到GitHub](https://github.com/zzy/juniper-book-zh)；或者直接联系。
 
-💥 这份指南是 **主观的**，它与Ray官方文档几乎，但不是完全**不同**。您会发现一份优秀的简明列表，包含有强烈推荐的选项。
+> 电子邮箱：linshi@budshome.com；微信：cd-zzy；QQ：9809920。
 
-> 使用 Python 3 是*高度* 优先于 Python 2。如果您发现自己 仍然 在生产环境中使用 Python 2，请考虑升级您的应用程序和基础设施。如果您正在使用 Python 3，恭喜您 —— 您确实有很好的品味。 ——Kenneth Reitz
+感谢`graphql-rust/juniper 团队`的无私奉献。
 
-## 致谢
+💥 笔者无意侵犯任何人的权利和利益，故若有不适，请联系我。
 
-感谢妻子的支持，以及可爱的女儿对我心情的调节。
+💥 **更新时间：2019-08-27**
 
-感谢Ray项目团队的无私奉献。
-
-## 授权
-
-欢迎转载、引用。
-
-转载、引用请注明出处。
-
-作者保留本书和本书相关的所有权利。
+------
