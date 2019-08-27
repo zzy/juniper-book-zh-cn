@@ -1,5 +1,9 @@
 # Juniper
 
+> [README.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/README.md)
+> <br />
+> commit 9623e4d32694118e68ce8706f29e2cfbc6c5b6dc
+
 Juniper is a [GraphQL] server library for Rust. Build type-safe and fast API
 servers with minimal boilerplate and configuration.
 
