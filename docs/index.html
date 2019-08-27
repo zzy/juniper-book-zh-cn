@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="affix"><a href="index.html" class="active">关于此书</a></li><li class="affix"><a href="preface.html">前言</a></li><li class="spacer"></li><li class="spacer"></li></ol>
+                <ol class="chapter"><li class="affix"><a href="preface.html">前言</a></li><li class="affix"><a href="index.html" class="active">关于此书</a></li><li class="spacer"></li><li class="spacer"></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,29 +148,61 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#juniper-中文手册同步最新开发版" id="juniper-中文手册同步最新开发版">Juniper 中文手册（同步最新开发版）</a></h1>
-<p><a href="https://juniper.budshome.com">Juniper 中文手册（同步最新开发版）-https://juniper.budshome.com</a>，内容译自 <a href="https://github.com/graphql-rust/juniper/tree/master/docs/book">graphql-rust/juniper 官方文档</a>。</p>
-<hr />
-<h2><a class="header" href="#声明" id="声明">声明</a></h2>
-<p>水平有限，错漏难免，欢迎指教；或请发 <a href="https://github.com/zzy/juniper-book-zh">issue到GitHub</a>；或者直接联系。</p>
-<blockquote>
-<p>电子邮箱：linshi@budshome.com；微信：cd-zzy；QQ：9809920。</p>
-</blockquote>
-<p>感谢<code>graphql-rust/juniper 团队</code>的无私奉献。</p>
-<p>💥 笔者无意侵犯任何人的权利和利益，故若有不适，请联系我。</p>
-<p>💥 <strong>更新时间：2019-08-27</strong></p>
-<hr />
+                        <h1><a class="header" href="#juniper" id="juniper">Juniper</a></h1>
+<p>Juniper is a <a href="http://graphql.org">GraphQL</a> server library for Rust. Build type-safe and fast API
+servers with minimal boilerplate and configuration.</p>
+<p><a href="http://graphql.org">GraphQL</a> is a data query language developed by Facebook intended to
+serve mobile and web application frontends.</p>
+<p><em>Juniper</em> makes it possible to write GraphQL servers in Rust that are
+type-safe and blazingly fast. We also try to make declaring and resolving
+GraphQL schemas as convenient as possible as Rust will allow.</p>
+<p>Juniper does not include a web server - instead it provides building blocks to
+make integration with existing servers straightforward. It optionally provides a
+pre-built integration for the <a href="https://hyper.rs">Hyper</a>, <a href="http://ironframework.io">Iron</a>, <a href="https://rocket.rs">Rocket</a>, and <a href="https://github.com/seanmonstar/warp">Warp</a> frameworks, including
+embedded <a href="https://github.com/graphql/graphiql">Graphiql</a> for easy debugging.</p>
+<ul>
+<li><a href="https://crates.io/crates/juniper">Cargo crate</a></li>
+<li><a href="https://docs.rs/juniper">API Reference</a></li>
+</ul>
+<h2><a class="header" href="#features" id="features">Features</a></h2>
+<p>Juniper supports the full GraphQL query language according to the
+<a href="http://facebook.github.io/graphql">specification</a>, including interfaces, unions, schema
+introspection, and validations.
+It does not, however, support the schema language.</p>
+<p>As an exception to other GraphQL libraries for other languages, Juniper builds
+non-null types by default. A field of type <code>Vec&lt;Episode&gt;</code> will be converted into
+<code>[Episode!]!</code>. The corresponding Rust type for e.g. <code>[Episode]</code> would be
+<code>Option&lt;Vec&lt;Option&lt;Episode&gt;&gt;&gt;</code>.</p>
+<h2><a class="header" href="#integrations" id="integrations">Integrations</a></h2>
+<h3><a class="header" href="#data-types" id="data-types">Data types</a></h3>
+<p>Juniper has automatic integration with some very common Rust crates to make
+building schemas a breeze. The types from these crates will be usable in
+your Schemas automatically.</p>
+<ul>
+<li><a href="https://crates.io/crates/uuid">uuid</a></li>
+<li><a href="https://crates.io/crates/url">url</a></li>
+<li><a href="https://crates.io/crates/chrono">chrono</a></li>
+</ul>
+<h3><a class="header" href="#web-frameworks" id="web-frameworks">Web Frameworks</a></h3>
+<ul>
+<li><a href="https://hyper.rs">hyper</a></li>
+<li><a href="https://rocket.rs">rocket</a></li>
+<li><a href="http://ironframework.io">iron</a></li>
+<li><a href="https://github.com/seanmonstar/warp">warp</a></li>
+</ul>
+<h2><a class="header" href="#api-stability" id="api-stability">API Stability</a></h2>
+<p>Juniper has not reached 1.0 yet, thus some API instability should be expected.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-
-                        
-                            <a rel="next" href="preface.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="preface.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
+
                         
 
                         <div style="clear: both"></div>
@@ -180,11 +212,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-
-                
-                    <a href="preface.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a href="preface.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
+
                 
             </nav>
 
