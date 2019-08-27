@@ -4,4 +4,4 @@
 
 ------
 
-[欢迎参与]]](contributing.md)
+[欢迎参与](contributing.md)

@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="affix"><a href="index.html">介绍</a></li><li class="spacer"></li></ol>
+                <ol class="chapter"><li class="affix"><a href="index.html">介绍</a></li><li class="spacer"></li><li class="affix"><a href="contributing.html">欢迎参与</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -199,6 +199,39 @@ your Schemas automatically.</p>
 </ul>
 <h2><a class="header" href="#api-stability" id="api-stability">API Stability</a></h2>
 <p>Juniper has not reached 1.0 yet, thus some API instability should be expected.</p>
+<h1><a class="header" href="#juniper-中文手册同步最新开发版" id="juniper-中文手册同步最新开发版">Juniper 中文手册（同步最新开发版）</a></h1>
+<p><a href="https://juniper.budshome.com">Juniper 中文手册（同步最新开发版）-https://juniper.budshome.com</a> 包含 Juniper 中文文档和代码示例，内容译自 <a href="https://github.com/graphql-rust/juniper/tree/master/docs/book">graphql-rust/juniper 官方文档</a>。</p>
+<h2><a class="header" href="#欢迎参与" id="欢迎参与">欢迎参与</a></h2>
+<h3><a class="header" href="#需求" id="需求">需求</a></h3>
+<p>本手册由 <a href="https://github.com/rust-lang-nursery/mdBook">mdBook</a> 编译而成。</p>
+<p>如果已有 <code>Rust</code> 环境，安装 <code>mdBook</code> 请执行命令：</p>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+<h3><a class="header" href="#启动本地测试服务器" id="启动本地测试服务器">启动本地测试服务器</a></h3>
+<p>启动持续编译手册并自动加载页面的本地测试服务器，执行命令：</p>
+<pre><code class="language-bash">mdbook serve
+</code></pre>
+<h3><a class="header" href="#生成手册" id="生成手册">生成手册</a></h3>
+<p>将手册渲染输出为 <code>HTML</code>，执行命令：</p>
+<pre><code class="language-bash">mdbook build
+</code></pre>
+<p>输出目录为：<code>./docs</code>。</p>
+<h3><a class="header" href="#测试" id="测试">测试</a></h3>
+<p>测试手册中的所有代码示例，运行命令：</p>
+<pre><code class="language-bash">cd ./tests
+cargo test
+</code></pre>
+<h2><a class="header" href="#测试配置" id="测试配置">测试配置</a></h2>
+<p>手册中的所有 <code>Rust</code> 代码示例在 <code>CI</code> 上编译，使用了  <a href="https://github.com/budziq/rust-skeptic">skeptic</a> 库。</p>
+<h2><a class="header" href="#声明" id="声明">声明</a></h2>
+<p>水平有限，错漏难免，欢迎指教；或请发 <a href="https://github.com/zzy/juniper-book-zh">issue到GitHub</a>；或者直接联系。</p>
+<blockquote>
+<p>电子邮箱：linshi@budshome.com；微信：cd-zzy；QQ：9809920。</p>
+</blockquote>
+<p>感谢<code>graphql-rust/juniper 团队</code>的无私奉献。</p>
+<p>💥 笔者无意侵犯任何人的权利和利益，故若有不适，请联系我。</p>
+<p>💥 <strong>更新时间：2019-08-27</strong></p>
+<hr />
 
                     </main>
 
