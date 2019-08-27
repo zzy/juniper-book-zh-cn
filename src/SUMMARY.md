@@ -1,7 +1,7 @@
 # 目录
 
-[关于此书](README.md)
+[介绍](README.md)
 
 ------
 
-[前言](contributing.md)
+[欢迎参与]]](contributing.md)

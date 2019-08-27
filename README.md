@@ -2,7 +2,7 @@
 
 [Juniper 中文手册（同步最新开发版）-https://juniper.budshome.com](https://juniper.budshome.com) 包含 Juniper 中文文档和代码示例，内容译自 [graphql-rust/juniper 官方文档](https://github.com/graphql-rust/juniper/tree/master/docs/book)。
 
-## 欢迎帮助
+## 欢迎参与
 
 ### 需求
 
