@@ -1,7 +1,7 @@
 # 目录
 
-[介绍](README.md)
+[做贡献](contributing.md)
 
 ------
 
-[欢迎参与](contributing.md)
+[介绍](README.md)
