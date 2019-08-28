@@ -1,4 +1,4 @@
-# Quickstart
+# 快速入门
 
 > [quickstart.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/quickstart.md)
 > <br />
@@ -19,7 +19,7 @@ juniper = "^0.13.1"
 
 要将 Rust 语言的 `enums` 和 `structs` 暴露为 GraphQL，仅需向其增加一个自定义`派生属性`。Juniper 支持将 Rust 语言基本类型轻而易举地映射到 GraphQL 特性，诸如：`Option<T>`、`Vec<T>`、`Box<T>`、`String`、`f64` 和 `i32`、`引用`和`切片（slice）`.
 
-对于更高级的映射，Juniper 提供了多种`宏（macro）`来将 Rust 类型映射到 GraphQL 模式。最重要的宏是 [object][jp_obj_macro] - 过程宏，其用于声明解析器对象，你将使用解析器对象来 `Query` 和 `Mutation` 根元素（roots）。
+对于更高级的映射，Juniper 提供了多种`宏（macro）`来将 Rust 类型映射到 GraphQL 模式。[过程宏对象][jp_obj_macro]是最重要的宏对象之一，其用于声明解析器对象，你将使用解析器对象来 `Query` 和 `Mutation` 根（roots）。
 
 ```rust
 use juniper::{FieldResult};
@@ -39,7 +39,7 @@ enum Episode {
 }
 
 #[derive(juniper::GraphQLObject)]
-#[graphql(description="A humanoid creature in the Star Wars universe")]
+#[graphql(description="星球大战中的类人生物")]
 struct Human {
     id: String,
     name: String,
@@ -47,35 +47,32 @@ struct Human {
     home_planet: String,
 }
 
-// There is also a custom derive for mapping GraphQL input objects.
+// 另一个用于映射 GraphQL 输入对象的自定义派生。
 
 #[derive(juniper::GraphQLInputObject)]
-#[graphql(description="A humanoid creature in the Star Wars universe")]
+#[graphql(description="星球大战中的类人生物")]
 struct NewHuman {
     name: String,
     appears_in: Vec<Episode>,
     home_planet: String,
 }
 
-// Now, we create our root Query and Mutation types with resolvers by using the
-// object macro.
-// Objects can have contexts that allow accessing shared state like a database
-// pool.
+// 使用宏对象创建带有解析器的根查询和根变更。
+// 对象可以拥有类似数据库池一样的允许访问共享状态的上下文。
 
 struct Context {
-    // Use your real database pool here.
+    // 这里使用真实数据池
     pool: DatabasePool,
 }
 
-// To make our context usable by Juniper, we have to implement a marker trait.
+// 要让 Juniper 使用上下文，必须实现标注特性（trait）
 impl juniper::Context for Context {}
 
 struct Query;
 
 #[juniper::object(
-    // Here we specify the context type for the object.
-    // We need to do this in every type that
-    // needs access to the context.
+    // 指定对象的上下文类型。
+    // 需要访问上下文的每种类型都需如此。
     Context = Context,
 )]
 impl Query {
@@ -84,17 +81,16 @@ impl Query {
         "1.0"
     }
 
-    // Arguments to resolvers can either be simple types or input objects.
-    // To gain access to the context, we specify a argument
-    // that is a reference to the Context type.
-    // Juniper automatically injects the correct context here.
+    // 解析器的参数可以是简单类型，也可以是输入对象。
+    // 为了访问上下文，我们指定了一个引用上下文类型的参数。
+    // Juniper 会自动注入正确的上下文。
     fn human(context: &Context, id: String) -> FieldResult<Human> {
-        // Get a db connection.
+        // 获取数据库连接
         let connection = context.pool.get_connection()?;
-        // Execute a db query.
+        // 执行查询
         // Note the use of `?` to propagate errors.
         let human = connection.find_human(&id)?;
-        // Return the result.
+        // 返回结果集
         Ok(human)
     }
 }

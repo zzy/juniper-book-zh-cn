@@ -158,7 +158,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#quickstart" id="quickstart">Quickstart</a></h1>
+                        <h1><a class="header" href="#快速入门" id="快速入门">快速入门</a></h1>
 <blockquote>
 <p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/quickstart.md">quickstart.md</a>
 <br />
@@ -172,7 +172,7 @@ juniper = &quot;^0.13.1&quot;
 </code></pre>
 <h2><a class="header" href="#模式示例" id="模式示例">模式示例</a></h2>
 <p>要将 Rust 语言的 <code>enums</code> 和 <code>structs</code> 暴露为 GraphQL，仅需向其增加一个自定义<code>派生属性</code>。Juniper 支持将 Rust 语言基本类型轻而易举地映射到 GraphQL 特性，诸如：<code>Option&lt;T&gt;</code>、<code>Vec&lt;T&gt;</code>、<code>Box&lt;T&gt;</code>、<code>String</code>、<code>f64</code> 和 <code>i32</code>、<code>引用</code>和<code>切片（slice）</code>.</p>
-<p>对于更高级的映射，Juniper 提供了多种<code>宏（macro）</code>来将 Rust 类型映射到 GraphQL 模式。最重要的宏是 <a href="https://docs.rs/juniper/latest/juniper/macro.object.html">object</a> - 过程宏，其用于声明解析器对象，你将使用解析器对象来 <code>Query</code> 和 <code>Mutation</code> 根元素（roots）。</p>
+<p>对于更高级的映射，Juniper 提供了多种<code>宏（macro）</code>来将 Rust 类型映射到 GraphQL 模式。<a href="https://docs.rs/juniper/latest/juniper/macro.object.html">过程宏对象</a>是最重要的宏对象之一，其用于声明解析器对象，你将使用解析器对象来 <code>Query</code> 和 <code>Mutation</code> 根（roots）。</p>
 <pre><pre class="playpen"><code class="language-rust">use juniper::{FieldResult};
 
 # struct DatabasePool;
@@ -190,7 +190,7 @@ enum Episode {
 }
 
 #[derive(juniper::GraphQLObject)]
-#[graphql(description=&quot;A humanoid creature in the Star Wars universe&quot;)]
+#[graphql(description=&quot;星球大战中的类人生物&quot;)]
 struct Human {
     id: String,
     name: String,
@@ -198,35 +198,32 @@ struct Human {
     home_planet: String,
 }
 
-// There is also a custom derive for mapping GraphQL input objects.
+// 另一个用于映射 GraphQL 输入对象的自定义派生。
 
 #[derive(juniper::GraphQLInputObject)]
-#[graphql(description=&quot;A humanoid creature in the Star Wars universe&quot;)]
+#[graphql(description=&quot;星球大战中的类人生物&quot;)]
 struct NewHuman {
     name: String,
     appears_in: Vec&lt;Episode&gt;,
     home_planet: String,
 }
 
-// Now, we create our root Query and Mutation types with resolvers by using the
-// object macro.
-// Objects can have contexts that allow accessing shared state like a database
-// pool.
+// 使用宏对象创建带有解析器的根查询和根变更。
+// 对象可以拥有类似数据库池一样的允许访问共享状态的上下文。
 
 struct Context {
-    // Use your real database pool here.
+    // 这里使用真实数据池
     pool: DatabasePool,
 }
 
-// To make our context usable by Juniper, we have to implement a marker trait.
+// 要让 Juniper 使用上下文，必须实现标注特性（trait）
 impl juniper::Context for Context {}
 
 struct Query;
 
 #[juniper::object(
-    // Here we specify the context type for the object.
-    // We need to do this in every type that
-    // needs access to the context.
+    // 指定对象的上下文类型。
+    // 需要访问上下文的每种类型都需如此。
     Context = Context,
 )]
 impl Query {
@@ -235,17 +232,16 @@ impl Query {
         &quot;1.0&quot;
     }
 
-    // Arguments to resolvers can either be simple types or input objects.
-    // To gain access to the context, we specify a argument
-    // that is a reference to the Context type.
-    // Juniper automatically injects the correct context here.
+    // 解析器的参数可以是简单类型，也可以是输入对象。
+    // 为了访问上下文，我们指定了一个引用上下文类型的参数。
+    // Juniper 会自动注入正确的上下文。
     fn human(context: &amp;Context, id: String) -&gt; FieldResult&lt;Human&gt; {
-        // Get a db connection.
+        // 获取数据库连接
         let connection = context.pool.get_connection()?;
-        // Execute a db query.
+        // 执行查询
         // Note the use of `?` to propagate errors.
         let human = connection.find_human(&amp;id)?;
-        // Return the result.
+        // 返回结果集
         Ok(human)
     }
 }
