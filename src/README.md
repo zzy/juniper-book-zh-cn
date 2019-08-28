@@ -4,58 +4,45 @@
 > <br />
 > commit 9623e4d32694118e68ce8706f29e2cfbc6c5b6dc
 
-Juniper is a [GraphQL] server library for Rust. Build type-safe and fast API
-servers with minimal boilerplate and configuration.
+Juniper 是 Rust 语言的 [GraphQL] 服务器库，用最少量的样板文件和配置构建类型安全且快速的 API 服务器。
 
-[GraphQL][graphql] is a data query language developed by Facebook intended to
-serve mobile and web application frontends.
+[GraphQL][graphql] 是Facebook开发的一种数据查询语言，旨在为移动和 Web 应用程序前端提供服务。
 
-_Juniper_ makes it possible to write GraphQL servers in Rust that are
-type-safe and blazingly fast. We also try to make declaring and resolving
-GraphQL schemas as convenient as possible as Rust will allow.
+_Juniper_ 使以 Rust 语言编写类型安全且速度惊人的 GraphQL 服务器成为可能，我们还尝试尽可能方便地声明和解析 GraphQL 模式。
 
-Juniper does not include a web server - instead it provides building blocks to
-make integration with existing servers straightforward. It optionally provides a
-pre-built integration for the [Hyper][hyper], [Iron][iron], [Rocket], and [Warp][warp] frameworks, including
-embedded [Graphiql][graphiql] for easy debugging.
+Juniper 不包含 Web 服务器，仅提供了构建快，使得其与已有服务器的集成简单明了。Juniper 可选地为 [Hyper][hyper]、[Iron][iron]、[Rocket]，以及 [Warp][warp]等框架提供了预构建集成，并嵌入了 [Graphiql][graphiql]，以便于调试。
+
+_**译者注：**_ 对于 Juniper 团队没有提供预集成的 Web 框架，如 [actix-web]，其构建集成也很简单，[actix-web] 用户提供了完整集成实例。
 
 - [Cargo crate](https://crates.io/crates/juniper)
 - [API Reference][docsrs]
 
-## Features
+## 特点
 
-Juniper supports the full GraphQL query language according to the
-[specification][graphql_spec], including interfaces, unions, schema
-introspection, and validations.
-It does not, however, support the schema language.
+Juniper 根据 [GraphQL 规范定义][graphql_spec]支持完整的 GraphQL 查询语言，包括：接口、联合、模式自省，以及验证。但是不支持模式语言。
 
-As an exception to other GraphQL libraries for other languages, Juniper builds
-non-null types by default. A field of type `Vec<Episode>` will be converted into
-`[Episode!]!`. The corresponding Rust type for e.g. `[Episode]` would be
-`Option<Vec<Option<Episode>>>`.
+Juniper 作为 Rust 语言的 GraphQL 库有一个例外，默认构建非空类型。类型为 `Vec<Episode>` 的字段将被转换为 `[Episode!]!`，相应的 Rust 语言类型则为 `Option<Vec<Option<Episode>>>`。
 
-## Integrations
+## 集成
 
-### Data types
+### 数据类型
 
-Juniper has automatic integration with some very common Rust crates to make
-building schemas a breeze. The types from these crates will be usable in
-your Schemas automatically.
+Juniper 与一些较常见的 Rust 库进行了自动集成，使构建模式变得简单，被集成的 Rust 库中的类型将在 GraphQL 模式中自动可用。
 
 - [uuid][uuid]
 - [url][url]
 - [chrono][chrono]
 
-### Web Frameworks
+### Web 框架
 
 - [hyper][hyper]
 - [rocket][rocket]
 - [iron][iron]
 - [warp][warp]
 
-## API Stability
+## API 稳定性
 
-Juniper has not reached 1.0 yet, thus some API instability should be expected.
+Juniper 还未发布 1.0 版本，部分 API 稳定性预料不够成熟。
 
 [graphql]: http://graphql.org
 [graphiql]: https://github.com/graphql/graphiql
@@ -73,6 +60,7 @@ Juniper has not reached 1.0 yet, thus some API instability should be expected.
 [docsrs]: https://docs.rs/juniper
 [warp]: https://github.com/seanmonstar/warp
 [warp_examples]: https://github.com/graphql-rust/juniper/tree/master/juniper_warp/examples
+[actix-web]: https://github.com/actix/actix-web
 [uuid]: https://crates.io/crates/uuid
 [url]: https://crates.io/crates/url
 [chrono]: https://crates.io/crates/chrono
