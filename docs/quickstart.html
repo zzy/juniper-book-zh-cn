@@ -159,21 +159,20 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#quickstart" id="quickstart">Quickstart</a></h1>
-<p>This page will give you a short introduction to the concepts in Juniper.</p>
-<h2><a class="header" href="#installation" id="installation">Installation</a></h2>
-<p>!FILENAME Cargo.toml</p>
+<blockquote>
+<p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/quickstart.md">quickstart.md</a>
+<br />
+commit 29025e6cae4a249fa56017dcf16b95ee4e89363e</p>
+</blockquote>
+<p>简要介绍 Juniper 中的概念。</p>
+<h2><a class="header" href="#安装" id="安装">安装</a></h2>
+<p>!文件名 Cargo.toml</p>
 <pre><code class="language-toml">[dependencies]
-juniper = &quot;0.11&quot;
+juniper = &quot;^0.13.1&quot;
 </code></pre>
-<h2><a class="header" href="#schema-example" id="schema-example">Schema example</a></h2>
-<p>Exposing simple enums and structs as GraphQL is just a matter of adding a custom
-derive attribute to them. Juniper includes support for basic Rust types that
-naturally map to GraphQL features, such as <code>Option&lt;T&gt;</code>, <code>Vec&lt;T&gt;</code>, <code>Box&lt;T&gt;</code>,
-<code>String</code>, <code>f64</code>, and <code>i32</code>, references, and slices.</p>
-<p>For more advanced mappings, Juniper provides multiple macros to map your Rust
-types to a GraphQL schema. The most important one is the
-[object][jp_object] procedural macro that is used for declaring an object with
-resolvers, which you will use for the <code>Query</code> and <code>Mutation</code> roots.</p>
+<h2><a class="header" href="#模式示例" id="模式示例">模式示例</a></h2>
+<p>要将 Rust 语言的 <code>enums</code> 和 <code>structs</code> 暴露为 GraphQL，仅需向其增加一个自定义<code>派生属性</code>。Juniper 支持将 Rust 语言基本类型轻而易举地映射到 GraphQL 特性，诸如：<code>Option&lt;T&gt;</code>、<code>Vec&lt;T&gt;</code>、<code>Box&lt;T&gt;</code>、<code>String</code>、<code>f64</code> 和 <code>i32</code>、<code>引用</code>和<code>切片（slice）</code>.</p>
+<p>对于更高级的映射，Juniper 提供了多种<code>宏（macro）</code>来将 Rust 类型映射到 GraphQL 模式。最重要的宏是 <a href="https://docs.rs/juniper/latest/juniper/macro.object.html">object</a> - 过程宏，其用于声明解析器对象，你将使用解析器对象来 <code>Query</code> 和 <code>Mutation</code> 根元素（roots）。</p>
 <pre><pre class="playpen"><code class="language-rust">use juniper::{FieldResult};
 
 # struct DatabasePool;

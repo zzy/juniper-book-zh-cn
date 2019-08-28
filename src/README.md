@@ -17,9 +17,9 @@ _**译者注：**_ 对于 Juniper 团队没有提供预集成的 Web 框架，�
 - [Cargo crate](https://crates.io/crates/juniper)
 - [API Reference][docsrs]
 
-## 特点
+## 特性
 
-Juniper 根据 [GraphQL 规范定义][graphql_spec]支持完整的 GraphQL 查询语言，包括：接口、联合、模式自省，以及验证。但是不支持模式语言。
+Juniper 根据 [GraphQL 规范定义][graphql_spec]支持完整的 GraphQL 查询语言，包括：接口、联合、模式内省，以及验证。但是不支持模式语言。
 
 Juniper 作为 Rust 语言的 GraphQL 库有一个例外，默认构建非空类型。类型为 `Vec<Episode>` 的字段将被转换为 `[Episode!]!`，相应的 Rust 语言类型则为 `Option<Vec<Option<Episode>>>`。
 
@@ -42,7 +42,7 @@ Juniper 与一些较常见的 Rust 库进行了自动集成，使构建模式变
 
 ## API 稳定性
 
-Juniper 还未发布 1.0 版本，部分 API 稳定性预料不够成熟。
+Juniper 还未发布 1.0 版本，部分 API 稳定性可能不够成熟。
 
 [graphql]: http://graphql.org
 [graphiql]: https://github.com/graphql/graphiql

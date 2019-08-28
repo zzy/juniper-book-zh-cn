@@ -1,27 +1,25 @@
 # Quickstart
 
-This page will give you a short introduction to the concepts in Juniper.
+> [quickstart.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/quickstart.md)
+> <br />
+> commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
 
-## Installation
+简要介绍 Juniper 中的概念。
 
-!FILENAME Cargo.toml
+## 安装
+
+!文件名 Cargo.toml
 
 ```toml
 [dependencies]
-juniper = "0.11"
+juniper = "^0.13.1"
 ```
 
-## Schema example
+## 模式示例
 
-Exposing simple enums and structs as GraphQL is just a matter of adding a custom
-derive attribute to them. Juniper includes support for basic Rust types that
-naturally map to GraphQL features, such as `Option<T>`, `Vec<T>`, `Box<T>`,
-`String`, `f64`, and `i32`, references, and slices.
+要将 Rust 语言的 `enums` 和 `structs` 暴露为 GraphQL，仅需向其增加一个自定义`派生属性`。Juniper 支持将 Rust 语言基本类型轻而易举地映射到 GraphQL 特性，诸如：`Option<T>`、`Vec<T>`、`Box<T>`、`String`、`f64` 和 `i32`、`引用`和`切片（slice）`.
 
-For more advanced mappings, Juniper provides multiple macros to map your Rust
-types to a GraphQL schema. The most important one is the
-[object][jp_object] procedural macro that is used for declaring an object with
-resolvers, which you will use for the `Query` and `Mutation` roots.
+对于更高级的映射，Juniper 提供了多种`宏（macro）`来将 Rust 类型映射到 GraphQL 模式。最重要的宏是 [object][jp_obj_macro] - 过程宏，其用于声明解析器对象，你将使用解析器对象来 `Query` 和 `Mutation` 根元素（roots）。
 
 ```rust
 use juniper::{FieldResult};
