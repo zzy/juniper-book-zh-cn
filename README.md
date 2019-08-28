@@ -45,7 +45,7 @@ cd ./tests
 cargo test
 ```
 
-## 测试配置
+### 测试配置
 
 手册中的所有 `Rust` 代码示例在 `CI` 上编译，使用了  [skeptic](https://github.com/budziq/rust-skeptic) 库。
 
