@@ -108,7 +108,7 @@ impl Person {
 
 方法的字段参数也是可以定制的，可以指定自定义描述和默认值。
 
-**注**：这个语法目前有点别扭。一旦实现了 [Rust RFC 2565](https://github.com/rust-lang/rust/issues/60406)，将会变得好用。
+**注意**：此语法目前有点别扭。一旦实现了 [Rust RFC 2565](https://github.com/rust-lang/rust/issues/60406)，将会变得好用。
 
 ```rust
 
@@ -146,4 +146,4 @@ GraphQL 字段提供了比 Rust 标准方法提供了更多的功能：
 * 参数默认值；
 * 参数描述
 
-更多的特性在[参考文档](https://docs.rs/juniper/latest/juniper/macro.object.html)中有更详细的描述。
+更多的特性在[参考文档](https://docs.rs/juniper/latest/juniper/macro.object.html)中有详细的描述。

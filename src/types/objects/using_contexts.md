@@ -1,14 +1,12 @@
-# Using contexts
+# 上下文
 
-The context type is a feature in Juniper that lets field resolvers access global
-data, most commonly database connections or authentication information. The
-context is usually created from a _context factory_. How this is defined is
-specific to the framework integration you're using, so check out the
-documentation for either the [Iron](../../servers/iron.md) or [Rocket](../../servers/rocket.md)
-integration.
+> [types/objects/using_contexts.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/objects/using_contexts.md)
+> <br />
+> commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
 
-In this chapter, we'll show you how to define a context type and use it in field
-resolvers. Let's say that we have a simple user database in a `HashMap`:
+上下文类型是 Juniper 中的一个特性，它允许字段解析器访问全局数据，最常见的是数据库连接或身份验证信息。上下文通常由 _上下文工厂（context factory）_ 方法创建。上下文的定义，与您正在使用的框架如何集成有关，请查阅 [Iron](../../servers/iron.md) 或 [Rocket](../../servers/rocket.md) 等框架的集成文档。
+
+本章中，将向您展示如何定义上下文类型，以及如何在字段解析器中使用它。假定有一个简单的用户资料库封装在 `HashMap` 中：
 
 ```rust
 # #![allow(dead_code)]
@@ -27,26 +25,22 @@ struct User {
 # fn main() { }
 ```
 
-We would like a `friends` field on `User` that returns a list of `User` objects.
-In order to write such a field though, the database must be queried.
+我们希望 `User` 上的 `friends` 字段返回 `User` 对象列表。为了编写这段代码，必须查询数据库。
 
-To solve this, we mark the `Database` as a valid context type and assign it to
-the user object. 
+为了解决这个问题，我们标记 `Database` 为一个有效的上下文类型，并将其指派给 user 对象。
 
-To gain access to the context, we need to specify an argument with the same 
-type as the specified `Context` for the type:
-
+为了访问上下文，我们需要为被访问的上下文类型指定一个参数，此参数和被访问的 `上下文（Context）` 类型一致：
 
 ```rust
 # use std::collections::HashMap;
 extern crate juniper;
 
-// This struct represents our context.
+// 此结构体即为将要被访问的上下文
 struct Database {
     users: HashMap<i32, User>,
 }
 
-// Mark the Database as a valid context type for Juniper
+// 标记 Database 为一个有效的 Juniper 上下文类型
 impl juniper::Context for Database {}
 
 struct User {
@@ -56,21 +50,20 @@ struct User {
 }
 
 
-// Assign Database as the context type for User
+// 指派 Database 作为 User 的上下文类型
 #[juniper::object(
     Context = Database,
 )]
 impl User {
-    // 3. Inject the context by specifying an argument
-    //    with the context type.
-    // Note: 
-    //   - the type must be a reference
-    //   - the name of the argument SHOULD be context
+    // 3. 通过给上下文类型指定参数来注入上下文
+    // 注意：
+    //   - 类型必须是一个 Rust 引用
+    //   - 参数名必须是 context
     fn friends(&self, context: &Database) -> Vec<&User> {
 
-        // 5. Use the database to lookup users
+        // 5. 使用 database 查找 users
         self.friend_ids.iter()
-            .map(|id| context.users.get(id).expect("Could not find user with ID"))
+            .map(|id| context.users.get(id).expect("无法找到匹配该 ID 的用户"))
             .collect()
     }
 
@@ -86,7 +79,5 @@ impl User {
 # fn main() { }
 ```
 
-You only get an immutable reference to the context, so if you want to affect
-change to the execution, you'll need to use [interior
-mutability](https://doc.rust-lang.org/book/first-edition/mutability.html#interior-vs-exterior-mutability)
-using e.g. `RwLock` or `RefCell`.
+您仅获得对上下文的不可变引用，因此，如果您想要执行更改操作，您将需要利用[内部可变性（interior
+mutability）](https://doc.rust-lang.org/book/first-edition/mutability.html#interior-vs-exterior-mutability)，例如：`RwLock` 或 `RefCell`。
