@@ -239,14 +239,15 @@ impl Query {
         // 获取数据库连接
         let connection = context.pool.get_connection()?;
         // 执行查询
-        // Note the use of `?` to propagate errors.
+        // 注意 `?` 的用法，进行错误传播。
+        // 译者注：上一章“特点”中提到，Juniper 默认构建非空类型
         let human = connection.find_human(&amp;id)?;
         // 返回结果集
         Ok(human)
     }
 }
 
-// Now, we do the same for our Mutation type.
+// 下面对变更类型做同样的事情
 
 struct Mutation;
 
@@ -262,20 +263,19 @@ impl Mutation {
     }
 }
 
-// A root schema consists of a query and a mutation.
-// Request queries can be executed against a RootNode.
+// 根模式由查询和变更组成，故查询请求可以执行于 RootNode。
 type Schema = juniper::RootNode&lt;'static, Query, Mutation&gt;;
 
 # fn main() {
 #   let _ = Schema::new(Query, Mutation{});
 # }
 </code></pre></pre>
-<p>We now have a very simple but functional schema for a GraphQL server!</p>
-<p>To actually serve the schema, see the guides for our various <a href="./servers/index.html">server integrations</a>.</p>
-<p>You can also invoke the executor directly to get a result for a query:</p>
-<h2><a class="header" href="#executor" id="executor">Executor</a></h2>
-<p>You can invoke <code>juniper::execute</code> directly to run a GraphQL query:</p>
-<pre><pre class="playpen"><code class="language-rust"># // Only needed due to 2018 edition because the macro is not accessible.
+<p>现在，我们有了一个非常简单，但模式功能齐全的 GraphQL服务器。</p>
+<p>要让此模式在服务器端起作用，查阅各类<a href="./servers/index.html">服务器集成</a>指南。</p>
+<p>也可以直接调用执行器（executor）来获取查询结果集：</p>
+<h2><a class="header" href="#执行器executor" id="执行器executor">执行器（executor）</a></h2>
+<p>可以直接调用 <code>juniper::execute</code> 来运行 GraphQL 查询：</p>
+<pre><pre class="playpen"><code class="language-rust"># // 由于宏（macro）不可访问，如下代码仅 Rust-2018 版需要
 # #[macro_use] extern crate juniper;
 use juniper::{FieldResult, Variables, EmptyMutation};
 
@@ -287,7 +287,7 @@ enum Episode {
     Jedi,
 }
 
-// Arbitrary context data.
+// 上下文（context）数据
 struct Ctx(Episode);
 
 impl juniper::Context for Ctx {}
@@ -304,15 +304,14 @@ impl Query {
 }
 
 
-// A root schema consists of a query and a mutation.
-// Request queries can be executed against a RootNode.
+// 根模式由查询和变更组成，故查询请求可以执行于 RootNode。
 type Schema = juniper::RootNode&lt;'static, Query, EmptyMutation&lt;Ctx&gt;&gt;;
 
 fn main() {
-    // Create a context object.
+    // 创建上下文对象
     let ctx = Ctx(Episode::NewHope);
 
-    // Run the executor.
+    // 运行执行器
     let (res, _errors) = juniper::execute(
         &quot;query { favoriteEpisode }&quot;,
         None,
@@ -321,7 +320,7 @@ fn main() {
         &amp;ctx,
     ).unwrap();
 
-    // Ensure the value matches.
+    // 确保查询结果值匹配
     assert_eq!(
         res,
         graphql_value!({

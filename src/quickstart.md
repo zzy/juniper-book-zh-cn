@@ -88,14 +88,15 @@ impl Query {
         // 获取数据库连接
         let connection = context.pool.get_connection()?;
         // 执行查询
-        // Note the use of `?` to propagate errors.
+        // 注意 `?` 的用法，进行错误传播。
+        // 译者注：上一章“特点”中提到，Juniper 默认构建非空类型
         let human = connection.find_human(&id)?;
         // 返回结果集
         Ok(human)
     }
 }
 
-// Now, we do the same for our Mutation type.
+// 下面对变更类型做同样的事情
 
 struct Mutation;
 
@@ -111,8 +112,7 @@ impl Mutation {
     }
 }
 
-// A root schema consists of a query and a mutation.
-// Request queries can be executed against a RootNode.
+// 根模式由查询和变更组成，故查询请求可以执行于 RootNode。
 type Schema = juniper::RootNode<'static, Query, Mutation>;
 
 # fn main() {
@@ -120,18 +120,18 @@ type Schema = juniper::RootNode<'static, Query, Mutation>;
 # }
 ```
 
-We now have a very simple but functional schema for a GraphQL server!
+现在，我们有了一个非常简单，但模式功能齐全的 GraphQL服务器。
 
-To actually serve the schema, see the guides for our various [server integrations](./servers/index.md).
+要让此模式在服务器端起作用，查阅各类[服务器集成](./servers/index.md)指南。
 
-You can also invoke the executor directly to get a result for a query:
+也可以直接调用执行器（executor）来获取查询结果集：
 
-## Executor
+## 执行器（executor）
 
-You can invoke `juniper::execute` directly to run a GraphQL query:
+可以直接调用 `juniper::execute` 来运行 GraphQL 查询：
 
 ```rust
-# // Only needed due to 2018 edition because the macro is not accessible.
+# // 由于宏（macro）不可访问，如下代码仅 Rust-2018 版需要
 # #[macro_use] extern crate juniper;
 use juniper::{FieldResult, Variables, EmptyMutation};
 
@@ -143,7 +143,7 @@ enum Episode {
     Jedi,
 }
 
-// Arbitrary context data.
+// 上下文（context）数据
 struct Ctx(Episode);
 
 impl juniper::Context for Ctx {}
@@ -160,15 +160,14 @@ impl Query {
 }
 
 
-// A root schema consists of a query and a mutation.
-// Request queries can be executed against a RootNode.
+// 根模式由查询和变更组成，故查询请求可以执行于 RootNode。
 type Schema = juniper::RootNode<'static, Query, EmptyMutation<Ctx>>;
 
 fn main() {
-    // Create a context object.
+    // 创建上下文对象
     let ctx = Ctx(Episode::NewHope);
 
-    // Run the executor.
+    // 运行执行器
     let (res, _errors) = juniper::execute(
         "query { favoriteEpisode }",
         None,
@@ -177,7 +176,7 @@ fn main() {
         &ctx,
     ).unwrap();
 
-    // Ensure the value matches.
+    // 确保查询结果值匹配
     assert_eq!(
         res,
         graphql_value!({
