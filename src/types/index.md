@@ -1,20 +1,22 @@
 # Type System
 
-Most of the work in working with juniper consists of mapping the 
-GraphQL type system to the Rust types your application uses.
+> [types/index.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/index.md)
+> <br />
+> commit a75396846d9f8930d1e07e972a91ff59308e77cf
 
-Juniper provides some convenient abstractions that try to make this process
-as painless as possible.
+使用 Juniper 的大部分工作包括将 GraphQL 类型系统映射到应用程序使用的 Rust 语言类型。
 
-Find out more in the individual chapters below.
+Juniper提供了一些恰当方便的抽象，力图使这个过程尽可能地简单。
 
-- [Defining objects](objects/defining_objects.md)
-  - [Complex fields](objects/complex_fields.md)
-  - [Using contexts](objects/using_contexts.md)
-  - [Error handling](objects/error_handling.md)
-- [Other types](other-index.md)
-  - [Enums](enums.md)
-  - [Interfaces](interfaces.md)
-  - [Input objects](input_objects.md)
-  - [Scalars](scalars.md)
-  - [Unions](unions.md)
+下面的章节可以查阅更多信息。
+
+- [对象定义](objects/defining_objects.md)
+  - [复杂字段](objects/complex_fields.md)
+  - [上下文](objects/using_contexts.md)
+  - [错误处理](objects/error_handling.md)
+- [其他类型](other-index.md)
+  - [枚举](enums.md)
+  - [接口](interfaces.md)
+  - [输入对象](input_objects.md)
+  - [标量](scalars.md)
+  - [联合](unions.md)

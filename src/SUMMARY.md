@@ -10,15 +10,15 @@
 - [类型系统](types/index.md)
 
   - [定义对象](types/objects/defining_objects.md)
-    - [复杂域](types/objects/complex_fields.md)
+    - [复杂字段](types/objects/complex_fields.md)
     - [上下文](types/objects/using_contexts.md)
     - [错误处理](types/objects/error_handling.md)
-  - [Other types](types/other-index.md)
-    - [Enums](types/enums.md)
-    - [Interfaces](types/interfaces.md)
-    - [Input objects](types/input_objects.md)
-    - [Scalars](types/scalars.md)
-    - [Unions](types/unions.md)
+  - [其他类型](types/other-index.md)
+    - [枚举](types/enums.md)
+    - [接口](types/interfaces.md)
+    - [输入对象](types/input_objects.md)
+    - [标量](types/scalars.md)
+    - [联合](types/unions.md)
 
 - [Schemas and mutations](schema/schemas_and_mutations.md)
 
