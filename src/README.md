@@ -8,7 +8,7 @@ Juniper 是 Rust 语言的 [GraphQL] 服务器库，用最少量的样板文件�
 
 [GraphQL][graphql] 是Facebook开发的一种数据查询语言，旨在为移动和 Web 应用程序前端提供服务。
 
-_Juniper_ 使以 Rust 语言编写类型安全且速度惊人的 GraphQL 服务器成为可能，我们还尝试尽可能方便地声明和解析 GraphQL 模式。
+_Juniper_ 使得以 Rust 语言编写类型安全且速度惊人的 GraphQL 服务器成为可能，我们还尝试尽可能方便地声明和解析 GraphQL 模式。
 
 Juniper 不包含 Web 服务器，仅提供了构建快，使得其与已有服务器的集成简单明了。Juniper 可选地为 [Hyper][hyper]、[Iron][iron]、[Rocket]，以及 [Warp][warp]等框架提供了预构建集成，并嵌入了 [Graphiql][graphiql]，以便于调试。
 
