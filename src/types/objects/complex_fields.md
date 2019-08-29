@@ -1,11 +1,10 @@
-# Complex fields
+# 复杂字段
 
-If you've got a struct that can't be mapped directly to GraphQL, that contains
-computed fields or circular structures, you have to use a more powerful tool:
-the `object` procedural macro. This macro lets you define GraphQL object
-fields in a Rust `impl` block for a type. Continuing with the
-example from the last chapter, this is how you would define `Person` using the
-macro:
+> [types/objects/complex_fields.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/objects/complex_fields.md)
+> <br />
+> commit cff6036206da12f9a4cbddb869569e9a977fa2ef
+
+如果您有一个不能直接映射到 GraphQL 的结构体（struct），其中包含计算字段或循环结构，那么您必须使用一个更强大的工具：`过程宏对象`。过程宏允许您在 Rust `impl` 块中为类型定义 GraphQL 对象字段。让我们继续上一章的示例，学习如何使用宏定义 `Person`：
 
 ```rust
 
@@ -28,9 +27,7 @@ impl Person {
 # fn main() { }
 ```
 
-While this is a bit more verbose, it lets you write any kind of function in the
-field resolver. With this syntax, fields can also take arguments:
-
+虽然上述示例代码有点冗长，但它允许您在字段解析器中编写任何类型的函数。同时，使用上述示例语法，字段可以接受参数：
 
 ```rust
 #[derive(juniper::GraphQLObject)]
@@ -45,7 +42,7 @@ struct House {
 
 #[juniper::object]
 impl House {
-    // Creates the field inhabitantWithName(name), returning a nullable person
+    // 创建字段 inhabitantWithName(name), 返回非空 person
     fn inhabitant_with_name(&self, name: String) -> Option<&Person> {
         self.inhabitants.iter().find(|p| p.name == name)
     }
@@ -54,41 +51,36 @@ impl House {
 # fn main() {}
 ```
 
-To access global data such as database connections or authentication
-information, a _context_ is used. To learn more about this, see the next
-chapter: [Using contexts](using_contexts.md).
+要访问诸如数据库连接或身份验证信息之类的全局数据，需要使用 _上下文（context）_。更多关于 _上下文（context）_ 的信息，将在下一章介绍：[上下文](using_contexts.md)。
 
-## Description, renaming, and deprecation
+## 描述、重命名，以及弃用
 
-Like with the derive attribute, field names will be converted from `snake_case`
-to `camelCase`. If you need to override the conversion, you can simply rename
-the field. Also, the type name can be changed with an alias:
+与派生属性一样，字段名将从命名约定 `snake_case` 转换为 `camelCase`。若需重写转换，可以简单地重命名字段。此外，可以使用别名更换类型名称：
 
 ```rust
 
 struct Person {
 }
 
-/// Doc comments are used as descriptions for GraphQL.
+/// Rust 文档注释用作 GraphQL 描述。
 #[juniper::object(
-    // With this attribtue you can change the public GraphQL name of the type.
+    // 使用 name 属性，可以更改 GraphQL 类型的公开名称。
     name = "PersonObject",
-    // You can also specify a description here, which will overwrite 
-    // a doc comment description.
+    // 可以在此处指定 GraphQL 描述，这将覆盖 Rust 文档注释。
     description = "...",
 )]
 impl Person {
 
-    /// A doc comment on the field will also be used for GraphQL.
+    /// 字段上的文档注释被用作 GraphQL 描述
     #[graphql(
-        // Or provide a description here.
+        // 或者指定 GraphQL 描述
         description = "...",
     )]
     fn doc_comment(&self) -> &str {
         ""
     }
 
-    // Fields can also be renamed if required.
+    // 如果需要，字段也可以使用 name 属性来重命名
     #[graphql(
         name = "myCustomFieldName",
     )]
@@ -96,8 +88,8 @@ impl Person {
         true
     }
 
-    // Deprecations also work as you'd expect.
-    // Both the standard Rust syntax and a custom attribute is accepted.
+    // 如期望的那样，弃用也有效。
+    // 即可以接受标准的 Rust 语法，也可以接受自定义属性。
     #[deprecated(note = "...")]
     fn deprecated_standard() -> bool {
         false
@@ -112,14 +104,11 @@ impl Person {
 # fn main() { }
 ```
 
-## Customizing arguments
+## 自定义参数
 
-Method field arguments can also be customized.
+方法的字段参数也是可以定制的，可以指定自定义描述和默认值。
 
-They can have custom descriptions and default values.
-
-**Note**: The syntax for this is currently a little awkward. 
-This will become better once the [Rust RFC 2565](https://github.com/rust-lang/rust/issues/60406) is implemented.
+**注**：这个语法目前有点别扭。一旦实现了[Rust RFC 2565](https://github.com/rust-lang/rust/issues/60406)，将会变得好用。
 
 ```rust
 

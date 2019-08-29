@@ -172,7 +172,7 @@ juniper = &quot;^0.13.1&quot;
 </code></pre>
 <h2><a class="header" href="#模式示例" id="模式示例">模式示例</a></h2>
 <p>要将 Rust 语言的 <code>enums</code> 和 <code>structs</code> 暴露为 GraphQL，仅需向其增加一个自定义<code>派生属性</code>。Juniper 支持将 Rust 语言基本类型轻而易举地映射到 GraphQL 特性，诸如：<code>Option&lt;T&gt;</code>、<code>Vec&lt;T&gt;</code>、<code>Box&lt;T&gt;</code>、<code>String</code>、<code>f64</code> 和 <code>i32</code>、<code>引用</code>和<code>切片（slice）</code>.</p>
-<p>对于更高级的映射，Juniper 提供了多种<code>宏（macro）</code>来将 Rust 类型映射到 GraphQL 模式。<a href="https://docs.rs/juniper/latest/juniper/macro.object.html">过程宏对象</a>是最重要的宏对象之一，其用于声明解析器对象，你将使用解析器对象来 <code>Query</code> 和 <code>Mutation</code> 根（roots）。</p>
+<p>对于更高级的映射，Juniper 提供了多种<code>宏（macro）</code>来将 Rust 类型映射到 GraphQL 模式。<a href="https://docs.rs/juniper/latest/juniper/macro.object.html">过程宏对象</a>是最重要的宏对象之一，其用于声明解析器对象，您将使用解析器对象来 <code>查询（Query）</code> 和 <code>变更（Mutation）</code> 根（roots）。</p>
 <pre><pre class="playpen"><code class="language-rust">use juniper::{FieldResult};
 
 # struct DatabasePool;

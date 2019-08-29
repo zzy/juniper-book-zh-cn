@@ -19,7 +19,7 @@ struct Person {
 # fn main() {}
 ```
 
-上述代码将创建一个名为 `Person` 的 GraphQL 对象，有两个字段：`String!` 类型的 `name`，`Int!` 类型的  `age`。Rust 语言类型系统中，变量绑定默认为非空（non-null）。若你需要可空（nullable）字段，可以使用 `Option<T>`。
+上述代码将创建一个名为 `Person` 的 GraphQL 对象，有两个字段：`String!` 类型的 `name`，`Int!` 类型的  `age`。Rust 语言类型系统中，变量绑定默认为非空（non-null）。若您需要可空（nullable）字段，可以使用 `Option<T>`。
 
 我们应当利用 GraphQL 是自文档化（self-documenting）的特点，向类型和字段添加描述。Juniper 将自动使用关联的 Rust 文档注释作为 GraphQL 描述：
 
