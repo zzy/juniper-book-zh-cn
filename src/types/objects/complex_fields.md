@@ -108,7 +108,7 @@ impl Person {
 
 方法的字段参数也是可以定制的，可以指定自定义描述和默认值。
 
-**注**：这个语法目前有点别扭。一旦实现了[Rust RFC 2565](https://github.com/rust-lang/rust/issues/60406)，将会变得好用。
+**注**：这个语法目前有点别扭。一旦实现了 [Rust RFC 2565](https://github.com/rust-lang/rust/issues/60406)，将会变得好用。
 
 ```rust
 
@@ -119,11 +119,11 @@ impl Person {
     #[graphql(
         arguments(
             arg1(
-                // Set a default value which will be injected if not present.
-                // The default can be any valid Rust expression, including a function call, etc.
+                // 设置默认值，如果字段没有被赋值，默认值将被使用。
+                // 默认值可以是任何有效的 Rust 表达式，甚至调用函数等。
                 default = true,
-                // Set a description.
-                description = "The first argument..."
+                // 设定 GraphQL 描述
+                description = "第一个参数..."
             ),
             arg2(
                 default = 0,
@@ -138,13 +138,12 @@ impl Person {
 # fn main() { }
 ```
 
-## More features
+## 更多功能
 
-GraphQL fields expose more features than Rust's standard method syntax gives us:
+GraphQL 字段提供了比 Rust 标准方法提供了更多的功能：
 
-* Per-field description and deprecation messages
-* Per-argument default values
-* Per-argument descriptions
+* 字段的描述和弃用消息；
+* 参数默认值；
+* 参数描述
 
-These, and more features, are described more thorougly in [the reference
-documentation](https://docs.rs/juniper/latest/juniper/macro.object.html).
+更多的特性在[参考文档](https://docs.rs/juniper/latest/juniper/macro.object.html)中有更详细的描述。

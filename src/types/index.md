@@ -1,4 +1,4 @@
-# Type System
+# 类型系统
 
 > [types/index.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/index.md)
 > <br />

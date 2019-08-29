@@ -400,7 +400,7 @@ fn main() {
     );
 }
 </code></pre></pre>
-<h1><a class="header" href="#type-system" id="type-system">Type System</a></h1>
+<h1><a class="header" href="#类型系统" id="类型系统">类型系统</a></h1>
 <blockquote>
 <p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/index.md">types/index.md</a>
 <br />
@@ -656,7 +656,7 @@ impl Person {
 </code></pre></pre>
 <h2><a class="header" href="#自定义参数" id="自定义参数">自定义参数</a></h2>
 <p>方法的字段参数也是可以定制的，可以指定自定义描述和默认值。</p>
-<p><strong>注</strong>：这个语法目前有点别扭。一旦实现了<a href="https://github.com/rust-lang/rust/issues/60406">Rust RFC 2565</a>，将会变得好用。</p>
+<p><strong>注</strong>：这个语法目前有点别扭。一旦实现了 <a href="https://github.com/rust-lang/rust/issues/60406">Rust RFC 2565</a>，将会变得好用。</p>
 <pre><pre class="playpen"><code class="language-rust">
 struct Person {}
 
@@ -665,11 +665,11 @@ impl Person {
     #[graphql(
         arguments(
             arg1(
-                // Set a default value which will be injected if not present.
-                // The default can be any valid Rust expression, including a function call, etc.
+                // 设置默认值，如果字段没有被赋值，默认值将被使用。
+                // 默认值可以是任何有效的 Rust 表达式，甚至调用函数等。
                 default = true,
-                // Set a description.
-                description = &quot;The first argument...&quot;
+                // 设定 GraphQL 描述
+                description = &quot;第一个参数...&quot;
             ),
             arg2(
                 default = 0,
@@ -683,15 +683,14 @@ impl Person {
 
 # fn main() { }
 </code></pre></pre>
-<h2><a class="header" href="#more-features" id="more-features">More features</a></h2>
-<p>GraphQL fields expose more features than Rust’s standard method syntax gives us:</p>
+<h2><a class="header" href="#更多功能" id="更多功能">更多功能</a></h2>
+<p>GraphQL 字段提供了比 Rust 标准方法提供了更多的功能：</p>
 <ul>
-<li>Per-field description and deprecation messages</li>
-<li>Per-argument default values</li>
-<li>Per-argument descriptions</li>
+<li>字段的描述和弃用消息；</li>
+<li>参数默认值；</li>
+<li>参数描述</li>
 </ul>
-<p>These, and more features, are described more thorougly in <a href="https://docs.rs/juniper/latest/juniper/macro.object.html">the reference
-documentation</a>.</p>
+<p>更多的特性在<a href="https://docs.rs/juniper/latest/juniper/macro.object.html">参考文档</a>中有更详细的描述。</p>
 <h1><a class="header" href="#using-contexts" id="using-contexts">Using contexts</a></h1>
 <p>The context type is a feature in Juniper that lets field resolvers access global
 data, most commonly database connections or authentication information. The
