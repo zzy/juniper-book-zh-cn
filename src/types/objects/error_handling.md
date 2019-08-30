@@ -1,15 +1,12 @@
 # Error handling
 
-Rust
-[provides](https://doc.rust-lang.org/book/second-edition/ch09-00-error-handling.html)
-two ways of dealing with errors: `Result<T, E>` for recoverable errors and
-`panic!` for unrecoverable errors. Juniper does not do anything about panicking;
-it will bubble up to the surrounding framework and hopefully be dealt with
-there.
+> [types/objects/error_handling.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/objects/error_handling.md)
+> <br />
+> commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
 
-For recoverable errors, Juniper works well with the built-in `Result` type, you
-can use the `?` operator or the `try!` macro and things will generally just work
-as you expect them to:
+Rust 将错误组合成[两个主要类别](https://rustbook.budshome.com/ch09-00-error-handling.html)： `Result<T, E>` 处理`可恢复错误`，`panic!` 处理`不可恢复错误`。Juniper 对`不可恢复错误`不做处理；`不可恢复错误`将上溯到集成 Juniper的框架，然后错误在框架层次有希望得到处理。
+
+对于`可恢复错误`，Juniper 能够完善地地处理内建的 `Result` 类型，您可以使用 `?` 操作符或者 `try!` 宏（macro）来让程序按照预期设定工作：
 
 ```rust
 # extern crate juniper;
@@ -35,7 +32,7 @@ impl Example {
     }
 
     fn foo() -> FieldResult<Option<String>> {
-      // Some invalid bytes.
+      // 随意的无效字节值
       let invalid = vec![128, 223];
 
       match str::from_utf8(&invalid) {
@@ -48,15 +45,9 @@ impl Example {
 # fn main() {}
 ```
 
-`FieldResult<T>` is an alias for `Result<T, FieldError>`, which is the error
-type all fields must return. By using the `?` operator or `try!` macro, any type
-that implements the `Display` trait - which are most of the error types out
-there - those errors are automatically converted into `FieldError`.
+`FieldResult<T>` 是 `Result<T, FieldError>` 的别名，其是所有字段都必须返回的错误类型。通过使用 `?` 操作符或者 `try!` 宏（macro），任何实现了 `Display` 特性的类型——这些既是当前绝大多数错误类型——这些错误会自动转换为 `FieldError`。
 
-When a field returns an error, the field's result is replaced by `null`, an
-additional `errors` object is created at the top level of the response, and the
-execution is resumed. For example, with the previous example and the following
-query:
+当字段返回错误时，字段的结果将被 `null` 替换，然后在响应的顶层附加一个名为 `errors` 的对象，最后继续执行程序。例如，基于前述的示例代码，在 GraphQL 做如下查询：
 
 ```graphql
 {
@@ -67,10 +58,9 @@ query:
 }
 ```
 
-If `str::from_utf8` resulted in a `std::str::Utf8Error`, the following would be
-returned:
+若果 `str::from_utf8` 导致了 `std::str::Utf8Error` 错误, 将返回以下内容：
 
-!FILENAME Response for nullable field with error
+!文件名 错误的可空字段的响应
 
 ```js
 {
@@ -87,11 +77,9 @@ returned:
 }
 ```
 
-If an error is returned from a non-null field, such as the
-example above, the `null` value is propagated up to the first nullable parent
-field, or the root `data` object if there are no nullable fields.
+如果非空字段返回错误，如同上述示例代码，`null` 值将传播到第一个可空的父字段；如果没有可空字段，则传播到根（root）内名为 `data` 的对象。
 
-For example, with the following query:
+举例，执行如下查询：
 
 ```graphql
 {
@@ -101,10 +89,9 @@ For example, with the following query:
 }
 ```
 
-If `File::open()` above resulted in `std::io::ErrorKind::PermissionDenied`, the
-following would be returned:
+若果上述代码中的 `File::open()` 导致 `std::io::ErrorKind::PermissionDenied` 错误，将返回以下内容：
 
-!FILENAME Response for non-null field with error and no nullable parent
+!文件名 没有可空父子段的非空字段的响应
 
 ```js
 {
@@ -115,10 +102,9 @@ following would be returned:
 }
 ```
 
-## Structured errors
+## 结构化错误
 
-Sometimes it is desirable to return additional structured error information
-to clients. This can be accomplished by implementing [`IntoFieldError`](https://docs.rs/juniper/latest/juniper/trait.IntoFieldError.html):
+有些情况下，有必要向客户端返回附加的结构化错误信息。可以通过实现 [`IntoFieldError`](https://docs.rs/juniper/latest/juniper/trait.IntoFieldError.html) 来解决：
 
 ```rust
 # #[macro_use] extern crate juniper;
@@ -130,7 +116,7 @@ impl juniper::IntoFieldError for CustomError {
     fn into_field_error(self) -> juniper::FieldError {
         match self {
             CustomError::WhateverNotSet => juniper::FieldError::new(
-                "Whatever does not exist",
+                "不存在任何东东",
                 graphql_value!({
                     "type": "NO_WHATEVER"
                 }),
@@ -156,12 +142,12 @@ impl Example {
 # fn main() {}
 ```
 
-The specified structured error information is included in the [`extensions`](https://facebook.github.io/graphql/June2018/#sec-Errors) key:
+指定的结构化错误信息被包含在名为 [`extensions`](https://facebook.github.io/graphql/June2018/#sec-Errors) 的键值中：
 
 ```js
 {
   "errors": [
-    "message": "Whatever does not exist",
+    "message": "不存在任何东东",
     "locations": [{ "line": 2, "column": 4 }]),
     "extensions": {
       "type": "NO_WHATEVER"
