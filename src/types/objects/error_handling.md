@@ -1,4 +1,4 @@
-# Error handling
+# 错误处理
 
 > [types/objects/error_handling.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/objects/error_handling.md)
 > <br />
@@ -6,7 +6,7 @@
 
 Rust 将错误组合成[两个主要类别](https://rustbook.budshome.com/ch09-00-error-handling.html)： `Result<T, E>` 处理`可恢复错误`，`panic!` 处理`不可恢复错误`。Juniper 对`不可恢复错误`不做处理；`不可恢复错误`将上溯到集成 Juniper的框架，然后错误在框架层次有希望得到处理。
 
-对于`可恢复错误`，Juniper 能够完善地地处理内建的 `Result` 类型，您可以使用 `?` 操作符或者 `try!` 宏（macro）来让程序按照预期设定工作：
+对于`可恢复错误`，Juniper 能够完善地地处理内建的 `Result` 类型，你可以使用 `?` 操作符或者 `try!` 宏（macro）来让程序按照预期设定工作：
 
 ```rust
 # extern crate juniper;

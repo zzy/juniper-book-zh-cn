@@ -158,14 +158,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#error-handling" id="error-handling">Error handling</a></h1>
+                        <h1><a class="header" href="#错误处理" id="错误处理">错误处理</a></h1>
 <blockquote>
 <p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/objects/error_handling.md">types/objects/error_handling.md</a>
 <br />
 commit 29025e6cae4a249fa56017dcf16b95ee4e89363e</p>
 </blockquote>
 <p>Rust 将错误组合成<a href="https://rustbook.budshome.com/ch09-00-error-handling.html">两个主要类别</a>： <code>Result&lt;T, E&gt;</code> 处理<code>可恢复错误</code>，<code>panic!</code> 处理<code>不可恢复错误</code>。Juniper 对<code>不可恢复错误</code>不做处理；<code>不可恢复错误</code>将上溯到集成 Juniper的框架，然后错误在框架层次有希望得到处理。</p>
-<p>对于<code>可恢复错误</code>，Juniper 能够完善地地处理内建的 <code>Result</code> 类型，您可以使用 <code>?</code> 操作符或者 <code>try!</code> 宏（macro）来让程序按照预期设定工作：</p>
+<p>对于<code>可恢复错误</code>，Juniper 能够完善地地处理内建的 <code>Result</code> 类型，你可以使用 <code>?</code> 操作符或者 <code>try!</code> 宏（macro）来让程序按照预期设定工作：</p>
 <pre><pre class="playpen"><code class="language-rust"># extern crate juniper;
 use std::{
     str,

@@ -164,7 +164,7 @@
 <br />
 commit cff6036206da12f9a4cbddb869569e9a977fa2ef</p>
 </blockquote>
-<p>如果您有一个不能直接映射到 GraphQL 的结构体（struct），其中包含计算字段或循环结构，那么您必须使用一个更强大的工具：<code>过程宏对象</code>。过程宏允许您在 Rust <code>impl</code> 块中为类型定义 GraphQL 对象字段。让我们继续上一章的示例，学习如何使用宏定义 <code>Person</code>：</p>
+<p>如果你有一个不能直接映射到 GraphQL 的结构体（struct），其中包含计算字段或循环结构，那么你必须使用一个更强大的工具：<code>过程宏对象</code>。过程宏允许你在 Rust <code>impl</code> 块中为类型定义 GraphQL 对象字段。让我们继续上一章的示例，学习如何使用宏定义 <code>Person</code>：</p>
 <pre><pre class="playpen"><code class="language-rust">
 struct Person {
     name: String,
@@ -184,7 +184,7 @@ impl Person {
 
 # fn main() { }
 </code></pre></pre>
-<p>虽然上述示例代码有点冗长，但它允许您在字段解析器中编写任何类型的函数。同时，使用上述示例语法，字段可以接受参数：</p>
+<p>虽然上述示例代码有点冗长，但它允许你在字段解析器中编写任何类型的函数。同时，使用上述示例语法，字段可以接受参数：</p>
 <pre><pre class="playpen"><code class="language-rust">#[derive(juniper::GraphQLObject)]
 struct Person {
     name: String,

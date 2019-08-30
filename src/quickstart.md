@@ -19,7 +19,7 @@ juniper = "^0.13.1"
 
 要将 Rust 语言的 `enums` 和 `structs` 暴露为 GraphQL，仅需向其增加一个自定义`派生属性`。Juniper 支持将 Rust 语言基本类型轻而易举地映射到 GraphQL 特性，诸如：`Option<T>`、`Vec<T>`、`Box<T>`、`String`、`f64` 和 `i32`、`引用`和`切片（slice）`.
 
-对于更高级的映射，Juniper 提供了多种`宏（macro）`来将 Rust 类型映射到 GraphQL 模式。[过程宏对象][jp_obj_macro]是最重要的宏对象之一，其用于声明解析器对象，您将使用解析器对象来 `查询（Query）` 和 `变更（Mutation）` 根（roots）。
+对于更高级的映射，Juniper 提供了多种`宏（macro）`来将 Rust 类型映射到 GraphQL 模式。[过程宏对象][jp_obj_macro]是最重要的宏对象之一，其用于声明解析器对象，你将使用解析器对象来 `查询（Query）` 和 `变更（Mutation）` 根（roots）。
 
 ```rust
 use juniper::{FieldResult};

@@ -4,9 +4,9 @@
 > <br />
 > commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
 
-上下文类型是 Juniper 中的一个特性，它允许字段解析器访问全局数据，最常见的是数据库连接或身份验证信息。上下文通常由 _上下文工厂（context factory）_ 方法创建。上下文的定义，与您正在使用的框架如何集成有关，请查阅 [Iron](../../servers/iron.md) 或 [Rocket](../../servers/rocket.md) 等框架的集成文档。
+上下文类型是 Juniper 中的一个特性，它允许字段解析器访问全局数据，最常见的是数据库连接或身份验证信息。上下文通常由 _上下文工厂（context factory）_ 方法创建。上下文的定义，与你正在使用的框架如何集成有关，请查阅 [Iron](../../servers/iron.md) 或 [Rocket](../../servers/rocket.md) 等框架的集成文档。
 
-本章中，将向您展示如何定义上下文类型，以及如何在字段解析器中使用它。假定有一个简单的用户资料库封装在 `HashMap` 中：
+本章中，将向你展示如何定义上下文类型，以及如何在字段解析器中使用它。假定有一个简单的用户资料库封装在 `HashMap` 中：
 
 ```rust
 # #![allow(dead_code)]
@@ -79,5 +79,5 @@ impl User {
 # fn main() { }
 ```
 
-您仅获得对上下文的不可变引用，因此，如果您想要执行更改操作，您将需要利用[内部可变性（interior
+你仅获得对上下文的不可变引用，因此，如果你想要执行更改操作，你将需要利用[内部可变性（interior
 mutability）](https://doc.rust-lang.org/book/first-edition/mutability.html#interior-vs-exterior-mutability)，例如：`RwLock` 或 `RefCell`。

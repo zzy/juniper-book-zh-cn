@@ -1,8 +1,10 @@
-# Enums
+# 枚举
 
-Enums in GraphQL are string constants grouped together to represent a set of
-possible values. Simple Rust enums can be converted to GraphQL enums by using a
-custom derive attribute:
+> [types/enums.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/enums.md)
+> <br />
+> commit a75396846d9f8930d1e07e972a91ff59308e77cf
+
+GraphQL 中的枚举是聚在一起表示一组值的字符串常量。通过自定义派生属性，可以将简单的 Rust 枚举转换为 GraphQL 枚举：
 
 ```rust
 #[derive(juniper::GraphQLEnum)]
@@ -15,10 +17,7 @@ enum Episode {
 # fn main() {}
 ```
 
-Juniper converts all enum variants to uppercase, so the corresponding string
-values for these variants are `NEWHOPE`, `EMPIRE`, and `JEDI`, respectively. If
-you want to override this, you can use the `graphql` attribute, similar to how
-it works when [defining objects](objects/defining_objects.md):
+Juniper 会将枚举变量转换为大写，因此这些变量对应的字符串值分别是 `NEWHOPE`、`EMPIRE`、`JEDI`。如果你想要重写，可使用 `graphql` 属性，如同我们在[对象定义](objects/defining_objects.md)学习的那样：
 
 ```rust
 #[derive(juniper::GraphQLEnum)]
@@ -32,22 +31,21 @@ enum Episode {
 # fn main() {}
 ```
 
-## Documentation and deprecation
+## 文档化和弃用
 
-Just like when defining objects, the type itself can be renamed and documented,
-while individual enum variants can be renamed, documented, and deprecated:
+就像定义对象一样，类型自身可以重命名和文档化。同样地，枚举变量可以重命名、文档化，以及弃用：
 
 ```rust
 #[derive(juniper::GraphQLEnum)]
-#[graphql(name="Episode", description="An episode of Star Wars")]
+#[graphql(name="Episode", description="星球大战4：新希望")]
 enum StarWarsEpisode {
-    #[graphql(deprecated="We don't really talk about this one")]
+    #[graphql(deprecated="对此，我们不做讨论")]
     ThePhantomMenace,
 
     #[graphql(name="NEW_HOPE")]
     NewHope,
 
-    #[graphql(description="Arguably the best one in the trilogy")]
+    #[graphql(description="最好的一部")]
     Empire,
     Jedi,
 }
