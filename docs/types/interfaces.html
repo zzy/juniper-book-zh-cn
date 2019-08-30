@@ -159,19 +159,16 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#interfaces" id="interfaces">Interfaces</a></h1>
-<p>GraphQL interfaces map well to interfaces known from common object-oriented
-languages such as Java or C#, but Rust has unfortunately not a concept that maps
-perfectly to them. Because of this, defining interfaces in Juniper can require a
-little bit of boilerplate code, but on the other hand gives you full control
-over which type is backing your interface.</p>
-<p>To highlight a couple of different ways you can implement interfaces in Rust,
-let’s have a look at the same end-result from a few different implementations:</p>
-<h2><a class="header" href="#traits" id="traits">Traits</a></h2>
-<p>Traits are maybe the most obvious concept you want to use when building
-interfaces. But because GraphQL supports downcasting while Rust doesn’t, you’ll
-have to manually specify how to convert a trait into a concrete type. This can
-be done in a couple of different ways:</p>
-<h3><a class="header" href="#downcasting-via-accessor-methods" id="downcasting-via-accessor-methods">Downcasting via accessor methods</a></h3>
+<blockquote>
+<p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/interfaces.md">types/interfaces.md</a>
+<br />
+commit 693405afa5a86df3a2277065696e7c42306ff630</p>
+</blockquote>
+<p>GraphQL 接口能够正确地映射到常见的面向对象语言接口，如 Java 或 C#。但很不幸，Rust 并无与 GraphQL 接口正确映射的概念。因此，Juniper 中定义接口需要一点点范例代码；另一方面，可以做到让你完全控制所支持接口的类型。</p>
+<p>为了突出展示在 Rust 中实现接口的不同方式，让我们看看不同实现方式所实现的相同结果：</p>
+<h2><a class="header" href="#特性traits" id="特性traits">特性（Traits）</a></h2>
+<p>特性（Traits）或许是你在 Rust 语言构建 GraphQL 接口时想使用的最明显概念。但是因为 GraphQL 支持<code>向下转型（downcasting）</code>而 Rust 却不支持，所以你必须手动实现如何将特性（trait）转换为具体类型。可以通过如下方式：</p>
+<h3><a class="header" href="#通过存取器方法向下转型" id="通过存取器方法向下转型">通过存取器方法向下转型</a></h3>
 <pre><pre class="playpen"><code class="language-rust">#[derive(juniper::GraphQLObject)]
 struct Human {
     id: String,
@@ -187,7 +184,7 @@ struct Droid {
 trait Character {
     fn id(&amp;self) -&gt; &amp;str;
 
-    // Downcast methods, each concrete class will need to implement one of these
+    // 向下转型方法，每个具体类都需要实现
     fn as_human(&amp;self) -&gt; Option&lt;&amp;Human&gt; { None }
     fn as_droid(&amp;self) -&gt; Option&lt;&amp;Droid&gt; { None }
 }
@@ -206,8 +203,7 @@ juniper::graphql_interface!(&lt;'a&gt; &amp;'a Character: () as &quot;Character&
     field id() -&gt; &amp;str { self.id() }
 
     instance_resolvers: |_| {
-        // The left hand side indicates the concrete type T, the right hand
-        // side should be an expression returning Option&lt;T&gt;
+        // 左边表示具体类型 T，右边是返回 Option&lt;T&gt; 的表达式
         &amp;Human =&gt; self.as_human(),
         &amp;Droid =&gt; self.as_droid(),
     }
@@ -215,15 +211,10 @@ juniper::graphql_interface!(&lt;'a&gt; &amp;'a Character: () as &quot;Character&
 
 # fn main() {}
 </code></pre></pre>
-<p>The <code>instance_resolvers</code> declaration lists all the implementors of the given
-interface and how to resolve them.</p>
-<p>As you can see, you lose a bit of the point with using traits: you need to list
-all the concrete types in the trait itself, and there’s a bit of repetition
-going on.</p>
-<h3><a class="header" href="#using-an-extra-database-lookup" id="using-an-extra-database-lookup">Using an extra database lookup</a></h3>
-<p>If you can afford an extra database lookup when the concrete class is requested,
-you can do away with the downcast methods and use the context instead. Here,
-we’ll use two hashmaps, but this could be two tables and some SQL calls instead:</p>
+<p><code>instance_resolvers 闭包</code>列出了给定接口的所有实现，以及如何解析接口。</p>
+<p>如所看到的，使用特性（traits）意义不大：你需要列出 trait 自身的所有具体类型，且会有一些重复，啰里啰唆。</p>
+<h3><a class="header" href="#使用数据库查找" id="使用数据库查找">使用数据库查找</a></h3>
+<p>当具体类被请求时，如果你可以提供额外的数据库查询，则可以废弃向下转型方法，转而使用上下文。如下示例代码，我们将使用两个哈希表，你可以用两张表和一些 SQL 调用来代替：</p>
 <pre><pre class="playpen"><code class="language-rust"># use std::collections::HashMap;
 #[derive(juniper::GraphQLObject)]
 #[graphql(Context = Database)]
@@ -269,8 +260,9 @@ juniper::graphql_interface!(&lt;'a&gt; &amp;'a Character: Database as &quot;Char
 
 # fn main() {}
 </code></pre></pre>
-<p>This removes the need of downcast methods, but still requires some repetition.</p>
-<h2><a class="header" href="#placeholder-objects" id="placeholder-objects">Placeholder objects</a></h2>
+<p>虽移除了向下转型方法，但代码仍有点啰嗦。</p>
+<h2><a class="header" href="#占位符placeholder对象" id="占位符placeholder对象">占位符（placeholder）对象</a></h2>
+<p>继续上段示例代码，trait 自身似乎没有必要，也许它可以仅是一个包含 ID 的结构体（struct）？</p>
 <p>Continuing on from the last example, the trait itself seems a bit unneccesary.
 Maybe it can just be a struct containing the ID?</p>
 <pre><pre class="playpen"><code class="language-rust"># use std::collections::HashMap;
@@ -310,12 +302,9 @@ juniper::graphql_interface!(Character: Database where Scalar = &lt;S&gt; |&amp;s
 
 # fn main() {}
 </code></pre></pre>
-<p>This reduces repetition some more, but might be impractical if the interface’s
-surface area is large. </p>
-<h2><a class="header" href="#enums" id="enums">Enums</a></h2>
-<p>Using enums and pattern matching lies half-way between using traits and using
-placeholder objects. We don’t need the extra database call in this case, so
-we’ll remove it.</p>
+<p>减少了不少重复，但如果接口数据较多的情况下，此种做法不符合实际。</p>
+<h2><a class="header" href="#枚举" id="枚举">枚举</a></h2>
+<p>使用枚举和模式匹配介于使用特性（trait）和使用占位符（placeholder）对象之间。本例中，我们无需额外的数据库调用，因此移除。</p>
 <pre><pre class="playpen"><code class="language-rust">#[derive(juniper::GraphQLObject)]
 struct Human {
     id: String,
