@@ -20,26 +20,26 @@
     - [标量](types/scalars.md)
     - [联合](types/unions.md)
 
-- [Schemas and mutations](schema/schemas_and_mutations.md)
+- [模式和变更](schema/schemas_and_mutations.md)
 
-- [Adding A Server](servers/index.md)
+- [服务器集成](servers/index.md)
 
-  - [Official Server Integrations](servers/official.md) - [Hyper](servers/hyper.md)
+  - [官方支持集成](servers/official.md)
     - [Warp](servers/warp.md)
     - [Rocket](servers/rocket.md)
     - [Iron](servers/iron.md)
     - [Hyper](servers/hyper.md)
-  - [Third Party Integrations](servers/third-party.md)
+  - [第三方集成](servers/third-party.md)
 
-- [Advanced Topics](advanced/index.md)
+- [高阶应用](advanced/index.md)
 
-  - [Introspection](advanced/introspection.md)
-  - [Non-struct objects](advanced/non_struct_objects.md)
-  - [Objects and generics](advanced/objects_and_generics.md)
-  - [Multiple operations per request](advanced/multiple_ops_per_request.md)
+  - [内省](advanced/introspection.md)
+  - [非结构体对象](advanced/non_struct_objects.md)
+  - [对象和泛型](advanced/objects_and_generics.md)
+  - [批量操作](advanced/multiple_ops_per_request.md)
 
-    # - [Context switching]
+    # - [上下文切换]
 
-    # - [Dynamic type system]
+    # - [动态类型系统]
 
 ------
