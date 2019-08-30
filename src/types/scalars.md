@@ -1,5 +1,9 @@
 # Scalars
 
+> [types/scalars.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/scalars.md)
+> <br />
+> commit 97e1005178b4bd4d96d85ffb7c82cd36b66380b3
+
 Scalars are the primitive types at the leaves of a GraphQL query: numbers,
 strings, and booleans. You can create custom scalars to other primitive values,
 but this often requires coordination with the client library intended to consume

@@ -1,4 +1,4 @@
-# Interfaces
+# 接口
 
 > [types/interfaces.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/interfaces.md)
 > <br />

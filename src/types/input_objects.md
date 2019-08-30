@@ -1,8 +1,10 @@
-# Input objects
+# 输入对象
 
-Input objects are complex data structures that can be used as arguments to
-GraphQL fields. In Juniper, you can define input objects using a custom derive
-attribute, similar to simple objects and enums:
+> [types/input_objects.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/input_objects.md)
+> <br />
+> commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
+
+输入对象是复杂的数据结构，可以用作 GraphQL 字段的参数。Juniper 中，可以使用自定义派生属性来定义输入对象，类似于定义简单对象、枚举：
 
 ```rust
 #[derive(juniper::GraphQLInputObject)]
@@ -17,7 +19,7 @@ struct Root;
 #[juniper::object]
 impl Root {
     fn users_at_location(coordinate: Coordinate, radius: f64) -> Vec<User> {
-        // Send coordinate to database
+        // 将坐标写入数据库
         // ...
 # unimplemented!()
     }
@@ -26,19 +28,18 @@ impl Root {
 # fn main() {}
 ```
 
-## Documentation and renaming
+## 文档化和重命名
 
-Just like the [other](objects/defining_objects.md) [derives](enums.md), you can rename
-and add documentation to both the type and the fields:
+类似于[定义对象](objects/defining_objects.md)、[派生枚举对象](enums.md)，对类型和字段，既可以重命名，也可以添加文档：
 
 ```rust
 #[derive(juniper::GraphQLInputObject)]
-#[graphql(name="Coordinate", description="A position on the globe")]
+#[graphql(name="Coordinate", description="地球某一处")]
 struct WorldCoordinate {
-    #[graphql(name="lat", description="The latitude")]
+    #[graphql(name="lat", description="维度")]
     latitude: f64,
 
-    #[graphql(name="long", description="The longitude")]
+    #[graphql(name="long", description="精度")]
     longitude: f64
 }
 
@@ -48,7 +49,7 @@ struct Root;
 #[juniper::object]
 impl Root {
     fn users_at_location(coordinate: WorldCoordinate, radius: f64) -> Vec<User> {
-        // Send coordinate to database
+        // 将坐标写入数据库
         // ...
 # unimplemented!()
     }
