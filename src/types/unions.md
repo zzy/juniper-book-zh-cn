@@ -1,4 +1,8 @@
-# Unions
+# 联合
+
+> [types/unions.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/types/unions.md)
+> <br />
+> commit 693405afa5a86df3a2277065696e7c42306ff630
 
 From a server's point of view, GraphQL unions are similar to interfaces: the
 only exception is that they don't contain fields on their own.
