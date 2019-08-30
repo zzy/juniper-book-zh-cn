@@ -4,20 +4,16 @@
 > <br />
 > commit 693405afa5a86df3a2277065696e7c42306ff630
 
-From a server's point of view, GraphQL unions are similar to interfaces: the
-only exception is that they don't contain fields on their own.
+从服务器视觉看，GraphQL 联合类似于接口：唯一的例外是联合自身不包含字段。
 
-In Juniper, the `graphql_union!` has identical syntax to the [interface
-macro](interfaces.md), but does not support defining fields. Therefore, the same
-considerations about using traits, placeholder types, or enums still apply to
-unions.
+在Juniper中，`graphql_union!` 与[接口宏（interface
+macro）](interfaces.md)具有相同的语法，但不支持定义字段。因此，接口中关于特性、占位符类型，或枚举使用，同样适用于联合。
 
-If we look at the same examples as in the interfaces chapter, we see the
-similarities and the tradeoffs:
+如果查阅和[接口章节](interfaces.md)相同的示例，我们将看到相似性和折衷性：
 
-## Traits
+## 特性（Traits）
 
-### Downcasting via accessor methods
+### 通过存取器方法向下转型
 
 ```rust
 #[derive(juniper::GraphQLObject)]
@@ -33,7 +29,7 @@ struct Droid {
 }
 
 trait Character {
-    // Downcast methods, each concrete class will need to implement one of these
+    // 向下转型方法，每个具体类都需要实现
     fn as_human(&self) -> Option<&Human> { None }
     fn as_droid(&self) -> Option<&Droid> { None }
 }
@@ -48,8 +44,7 @@ impl Character for Droid {
 
 juniper::graphql_union!(<'a> &'a Character: () as "Character" where Scalar = <S> |&self| { 
     instance_resolvers: |_| {
-        // The left hand side indicates the concrete type T, the right hand
-        // side should be an expression returning Option<T>
+        // 左边表示具体类型 T，右边是返回 Option<T> 的表达式
         &Human => self.as_human(),
         &Droid => self.as_droid(),
     }
@@ -58,9 +53,9 @@ juniper::graphql_union!(<'a> &'a Character: () as "Character" where Scalar = <S>
 # fn main() {}
 ```
 
-### Using an extra database lookup
+### 使用数据库查找
 
-FIXME: This example does not compile at the moment
+有毛病：此例代码还不能编译
 
 ```rust
 # use std::collections::HashMap;
@@ -107,7 +102,7 @@ juniper::graphql_union!(<'a> &'a Character: Database as "Character" where Scalar
 # fn main() {}
 ```
 
-## Placeholder objects
+## 占位符（placeholder）对象
 
 ```rust
 # use std::collections::HashMap;
@@ -146,7 +141,7 @@ juniper::graphql_union!(Character: Database where Scalar = <S> |&self| {
 # fn main() {}
 ```
 
-## Enums
+## 枚举
 
 ```rust
 #[derive(juniper::GraphQLObject)]

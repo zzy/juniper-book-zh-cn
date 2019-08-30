@@ -164,16 +164,12 @@
 <br />
 commit 693405afa5a86df3a2277065696e7c42306ff630</p>
 </blockquote>
-<p>From a server’s point of view, GraphQL unions are similar to interfaces: the
-only exception is that they don’t contain fields on their own.</p>
-<p>In Juniper, the <code>graphql_union!</code> has identical syntax to the <a href="interfaces.html">interface
-macro</a>, but does not support defining fields. Therefore, the same
-considerations about using traits, placeholder types, or enums still apply to
-unions.</p>
-<p>If we look at the same examples as in the interfaces chapter, we see the
-similarities and the tradeoffs:</p>
-<h2><a class="header" href="#traits" id="traits">Traits</a></h2>
-<h3><a class="header" href="#downcasting-via-accessor-methods" id="downcasting-via-accessor-methods">Downcasting via accessor methods</a></h3>
+<p>从服务器视觉看，GraphQL 联合类似于接口：唯一的例外是联合自身不包含字段。</p>
+<p>在Juniper中，<code>graphql_union!</code> 与<a href="interfaces.html">接口宏（interface
+macro）</a>具有相同的语法，但不支持定义字段。因此，接口中关于特性、占位符类型，或枚举使用，同样适用于联合。</p>
+<p>如果查阅和<a href="interfaces.html">接口章节</a>相同的示例，我们将看到相似性和折衷性：</p>
+<h2><a class="header" href="#特性traits" id="特性traits">特性（Traits）</a></h2>
+<h3><a class="header" href="#通过存取器方法向下转型" id="通过存取器方法向下转型">通过存取器方法向下转型</a></h3>
 <pre><pre class="playpen"><code class="language-rust">#[derive(juniper::GraphQLObject)]
 struct Human {
     id: String,
@@ -187,7 +183,7 @@ struct Droid {
 }
 
 trait Character {
-    // Downcast methods, each concrete class will need to implement one of these
+    // 向下转型方法，每个具体类都需要实现
     fn as_human(&amp;self) -&gt; Option&lt;&amp;Human&gt; { None }
     fn as_droid(&amp;self) -&gt; Option&lt;&amp;Droid&gt; { None }
 }
@@ -202,8 +198,7 @@ impl Character for Droid {
 
 juniper::graphql_union!(&lt;'a&gt; &amp;'a Character: () as &quot;Character&quot; where Scalar = &lt;S&gt; |&amp;self| { 
     instance_resolvers: |_| {
-        // The left hand side indicates the concrete type T, the right hand
-        // side should be an expression returning Option&lt;T&gt;
+        // 左边表示具体类型 T，右边是返回 Option&lt;T&gt; 的表达式
         &amp;Human =&gt; self.as_human(),
         &amp;Droid =&gt; self.as_droid(),
     }
@@ -211,8 +206,8 @@ juniper::graphql_union!(&lt;'a&gt; &amp;'a Character: () as &quot;Character&quot
 
 # fn main() {}
 </code></pre></pre>
-<h3><a class="header" href="#using-an-extra-database-lookup" id="using-an-extra-database-lookup">Using an extra database lookup</a></h3>
-<p>FIXME: This example does not compile at the moment</p>
+<h3><a class="header" href="#使用数据库查找" id="使用数据库查找">使用数据库查找</a></h3>
+<p>有毛病：此例代码还不能编译</p>
 <pre><pre class="playpen"><code class="language-rust"># use std::collections::HashMap;
 #[derive(juniper::GraphQLObject)]
 #[graphql(Context = Database)]
@@ -256,7 +251,7 @@ juniper::graphql_union!(&lt;'a&gt; &amp;'a Character: Database as &quot;Characte
 
 # fn main() {}
 </code></pre></pre>
-<h2><a class="header" href="#placeholder-objects" id="placeholder-objects">Placeholder objects</a></h2>
+<h2><a class="header" href="#占位符placeholder对象" id="占位符placeholder对象">占位符（placeholder）对象</a></h2>
 <pre><pre class="playpen"><code class="language-rust"># use std::collections::HashMap;
 #[derive(juniper::GraphQLObject)]
 #[graphql(Context = Database)]
@@ -292,7 +287,7 @@ juniper::graphql_union!(Character: Database where Scalar = &lt;S&gt; |&amp;self|
 
 # fn main() {}
 </code></pre></pre>
-<h2><a class="header" href="#enums" id="enums">Enums</a></h2>
+<h2><a class="header" href="#枚举" id="枚举">枚举</a></h2>
 <pre><pre class="playpen"><code class="language-rust">#[derive(juniper::GraphQLObject)]
 struct Human {
     id: String,
