@@ -158,23 +158,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#schemas" id="schemas">Schemas</a></h1>
-<p>A schema consists of two types: a query object and a mutation object (Juniper
-does not support subscriptions yet). These two define the root query fields
-and mutations of the schema, respectively.</p>
-<p>Both query and mutation objects are regular GraphQL objects, defined like any
-other object in Juniper. The mutation object, however, is optional since schemas
-can be read-only.</p>
-<p>In Juniper, the <code>RootNode</code> type represents a schema. You usually don’t have to
-create this object yourself: see the framework integrations for <a href="../servers/iron.html">Iron</a>
-and <a href="../servers/rocket.html">Rocket</a> how schemas are created together with the handlers
-themselves.</p>
-<p>When the schema is first created, Juniper will traverse the entire object graph
-and register all types it can find. This means that if you define a GraphQL
-object somewhere but never references it, it will not be exposed in a schema.</p>
-<h2><a class="header" href="#the-query-root" id="the-query-root">The query root</a></h2>
-<p>The query root is just a GraphQL object. You define it like any other GraphQL
-object in Juniper, most commonly using the <code>object</code> proc macro:</p>
+                        <h1><a class="header" href="#模式schemas" id="模式schemas">模式（Schemas）</a></h1>
+<blockquote>
+<p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/schema/schemas_and_mutations.md">schema/schemas_and_mutations.md</a>
+<br />
+commit 29025e6cae4a249fa56017dcf16b95ee4e89363e</p>
+</blockquote>
+<p>模式由两种类型组成：查询对象和变更对象（Juniper 还不支持订阅），分别定义了字段查询和模式变更。</p>
+<p>查询和变更都是常规的 GraphQL 对象，其定义类似于 Juniper 中的其它对象。不过变更对象是可选的，因为模式可以是只读性的。</p>
+<p>Juniper 中，<code>RootNode</code> 类型表示一个模式。通常不需要你自己创建此对象：请参阅 <a href="../servers/iron.html">Iron</a> 和 <a href="../servers/rocket.html">Rocket</a> 的框架集成，了解模式与框架处理程序是如何被一起创建的。</p>
+<p>模式首次创建时，Juniper 将遍历整个对象图，并注册所有类型。这意味着，如果定义了 GraphQL 对象但从未引用，那么此对象就不会暴露在模式中。</p>
+<h2><a class="header" href="#查询根query-root" id="查询根query-root">查询根（query root）</a></h2>
+<p>查询根（query root）也是 GraphQL 对象。其定义类似于 Juniper 中的其它对象，通常使用<code>过程宏对象</code>定义查询根：</p>
 <pre><pre class="playpen"><code class="language-rust"># use juniper::FieldResult;
 # #[derive(juniper::GraphQLObject)] struct User { name: String }
 struct Root;
@@ -182,16 +177,15 @@ struct Root;
 #[juniper::object]
 impl Root {
     fn userWithUsername(username: String) -&gt; FieldResult&lt;Option&lt;User&gt;&gt; {
-        // Look up user in database...
+        // 在数据库查找用户
 # unimplemented!()
     }
 }
 
 # fn main() { }
 </code></pre></pre>
-<h2><a class="header" href="#mutations" id="mutations">Mutations</a></h2>
-<p>Mutations are <em>also</em> just GraphQL objects. Each mutation is a single field that
-usually performs some mutating side-effect, such as updating a database.</p>
+<h2><a class="header" href="#变更" id="变更">变更</a></h2>
+<p>变更同样是 GraphQL 对象。变更是字段发生一些改变，如更新数据库。</p>
 <pre><pre class="playpen"><code class="language-rust"># use juniper::FieldResult;
 # #[derive(juniper::GraphQLObject)] struct User { name: String }
 struct Mutations;
@@ -199,7 +193,7 @@ struct Mutations;
 #[juniper::object]
 impl Mutations {
     fn signUpUser(name: String, email: String) -&gt; FieldResult&lt;User&gt; {
-        // Validate inputs and save user in database...
+        // 验证输入并存储数据
 # unimplemented!()
     }
 }
