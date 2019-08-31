@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>模式和变更 - Juniper - Rust 语言的 GraphQL 服务器</title>
+        <title>上下文切换 - Juniper - Rust 语言的 GraphQL 服务器</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -91,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="affix"><a href="../contributing.html">做贡献</a></li><li class="spacer"></li><li><a href="../index.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../quickstart.html"><strong aria-hidden="true">2.</strong> 快速入门</a></li><li><a href="../types/index.html"><strong aria-hidden="true">3.</strong> 类型系统</a></li><li><ol class="section"><li><a href="../types/objects/defining_objects.html"><strong aria-hidden="true">3.1.</strong> 定义对象</a></li><li><ol class="section"><li><a href="../types/objects/complex_fields.html"><strong aria-hidden="true">3.1.1.</strong> 复杂字段</a></li><li><a href="../types/objects/using_contexts.html"><strong aria-hidden="true">3.1.2.</strong> 上下文</a></li><li><a href="../types/objects/error_handling.html"><strong aria-hidden="true">3.1.3.</strong> 错误处理</a></li></ol></li><li><a href="../types/other-index.html"><strong aria-hidden="true">3.2.</strong> 其他类型</a></li><li><ol class="section"><li><a href="../types/enums.html"><strong aria-hidden="true">3.2.1.</strong> 枚举</a></li><li><a href="../types/interfaces.html"><strong aria-hidden="true">3.2.2.</strong> 接口</a></li><li><a href="../types/input_objects.html"><strong aria-hidden="true">3.2.3.</strong> 输入对象</a></li><li><a href="../types/scalars.html"><strong aria-hidden="true">3.2.4.</strong> 标量</a></li><li><a href="../types/unions.html"><strong aria-hidden="true">3.2.5.</strong> 联合</a></li></ol></li></ol></li><li><a href="../schema/schemas_and_mutations.html" class="active"><strong aria-hidden="true">4.</strong> 模式和变更</a></li><li><a href="../servers/index.html"><strong aria-hidden="true">5.</strong> 服务器集成</a></li><li><ol class="section"><li><a href="../servers/official.html"><strong aria-hidden="true">5.1.</strong> 官方支持集成</a></li><li><ol class="section"><li><a href="../servers/warp.html"><strong aria-hidden="true">5.1.1.</strong> Warp</a></li><li><a href="../servers/rocket.html"><strong aria-hidden="true">5.1.2.</strong> Rocket</a></li><li><a href="../servers/iron.html"><strong aria-hidden="true">5.1.3.</strong> Iron</a></li><li><a href="../servers/hyper.html"><strong aria-hidden="true">5.1.4.</strong> Hyper</a></li></ol></li><li><a href="../servers/third-party.html"><strong aria-hidden="true">5.2.</strong> 第三方集成</a></li></ol></li><li><a href="../advanced/index.html"><strong aria-hidden="true">6.</strong> 高阶应用</a></li><li><ol class="section"><li><a href="../advanced/introspection.html"><strong aria-hidden="true">6.1.</strong> 内省</a></li><li><a href="../advanced/non_struct_objects.html"><strong aria-hidden="true">6.2.</strong> 非结构体对象</a></li><li><a href="../advanced/objects_and_generics.html"><strong aria-hidden="true">6.3.</strong> 对象和泛型</a></li><li><a href="../advanced/multiple_ops_per_request.html"><strong aria-hidden="true">6.4.</strong> 批量操作</a></li><li><a href="../advanced/context_switching.html"><strong aria-hidden="true">6.5.</strong> 上下文切换</a></li><li><a href="../advanced/dynamic_type_system.html"><strong aria-hidden="true">6.6.</strong> 动态类型系统</a></li><li class="spacer"></li></ol></li></ol>
+                <ol class="chapter"><li class="affix"><a href="../contributing.html">做贡献</a></li><li class="spacer"></li><li><a href="../index.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../quickstart.html"><strong aria-hidden="true">2.</strong> 快速入门</a></li><li><a href="../types/index.html"><strong aria-hidden="true">3.</strong> 类型系统</a></li><li><ol class="section"><li><a href="../types/objects/defining_objects.html"><strong aria-hidden="true">3.1.</strong> 定义对象</a></li><li><ol class="section"><li><a href="../types/objects/complex_fields.html"><strong aria-hidden="true">3.1.1.</strong> 复杂字段</a></li><li><a href="../types/objects/using_contexts.html"><strong aria-hidden="true">3.1.2.</strong> 上下文</a></li><li><a href="../types/objects/error_handling.html"><strong aria-hidden="true">3.1.3.</strong> 错误处理</a></li></ol></li><li><a href="../types/other-index.html"><strong aria-hidden="true">3.2.</strong> 其他类型</a></li><li><ol class="section"><li><a href="../types/enums.html"><strong aria-hidden="true">3.2.1.</strong> 枚举</a></li><li><a href="../types/interfaces.html"><strong aria-hidden="true">3.2.2.</strong> 接口</a></li><li><a href="../types/input_objects.html"><strong aria-hidden="true">3.2.3.</strong> 输入对象</a></li><li><a href="../types/scalars.html"><strong aria-hidden="true">3.2.4.</strong> 标量</a></li><li><a href="../types/unions.html"><strong aria-hidden="true">3.2.5.</strong> 联合</a></li></ol></li></ol></li><li><a href="../schema/schemas_and_mutations.html"><strong aria-hidden="true">4.</strong> 模式和变更</a></li><li><a href="../servers/index.html"><strong aria-hidden="true">5.</strong> 服务器集成</a></li><li><ol class="section"><li><a href="../servers/official.html"><strong aria-hidden="true">5.1.</strong> 官方支持集成</a></li><li><ol class="section"><li><a href="../servers/warp.html"><strong aria-hidden="true">5.1.1.</strong> Warp</a></li><li><a href="../servers/rocket.html"><strong aria-hidden="true">5.1.2.</strong> Rocket</a></li><li><a href="../servers/iron.html"><strong aria-hidden="true">5.1.3.</strong> Iron</a></li><li><a href="../servers/hyper.html"><strong aria-hidden="true">5.1.4.</strong> Hyper</a></li></ol></li><li><a href="../servers/third-party.html"><strong aria-hidden="true">5.2.</strong> 第三方集成</a></li></ol></li><li><a href="../advanced/index.html"><strong aria-hidden="true">6.</strong> 高阶应用</a></li><li><ol class="section"><li><a href="../advanced/introspection.html"><strong aria-hidden="true">6.1.</strong> 内省</a></li><li><a href="../advanced/non_struct_objects.html"><strong aria-hidden="true">6.2.</strong> 非结构体对象</a></li><li><a href="../advanced/objects_and_generics.html"><strong aria-hidden="true">6.3.</strong> 对象和泛型</a></li><li><a href="../advanced/multiple_ops_per_request.html"><strong aria-hidden="true">6.4.</strong> 批量操作</a></li><li><a href="../advanced/context_switching.html" class="active"><strong aria-hidden="true">6.5.</strong> 上下文切换</a></li><li><a href="../advanced/dynamic_type_system.html"><strong aria-hidden="true">6.6.</strong> 动态类型系统</a></li><li class="spacer"></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -158,61 +158,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#模式schemas" id="模式schemas">模式（Schemas）</a></h1>
-<blockquote>
-<p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/schema/schemas_and_mutations.md">schema/schemas_and_mutations.md</a>
-<br />
-commit 29025e6cae4a249fa56017dcf16b95ee4e89363e</p>
-</blockquote>
-<p>模式由两种类型组成：查询对象和变更对象（Juniper 还不支持订阅），分别定义了字段查询和模式变更。</p>
-<p>查询和变更都是常规的 GraphQL 对象，其定义类似于 Juniper 中的其它对象。不过变更对象是可选的，因为模式可以是只读性的。</p>
-<p>Juniper 中，<code>RootNode</code> 类型表示一个模式。通常不需要你自己创建此对象：请参阅 <a href="../servers/iron.html">Iron</a> 和 <a href="../servers/rocket.html">Rocket</a> 的框架集成，了解模式与框架处理程序是如何被一起创建的。</p>
-<p>模式首次创建时，Juniper 将遍历整个对象图，并注册所有类型。这意味着，如果定义了 GraphQL 对象但从未引用，那么此对象就不会暴露在模式中。</p>
-<h2><a class="header" href="#查询根query-root" id="查询根query-root">查询根（query root）</a></h2>
-<p>查询根（query root）也是 GraphQL 对象。其定义类似于 Juniper 中的其它对象，通常使用<code>过程宏对象</code>定义查询根：</p>
-<pre><pre class="playpen"><code class="language-rust"># use juniper::FieldResult;
-# #[derive(juniper::GraphQLObject)] struct User { name: String }
-struct Root;
-
-#[juniper::object]
-impl Root {
-    fn userWithUsername(username: String) -&gt; FieldResult&lt;Option&lt;User&gt;&gt; {
-        // 在数据库查找用户
-# unimplemented!()
-    }
-}
-
-# fn main() { }
-</code></pre></pre>
-<h2><a class="header" href="#变更" id="变更">变更</a></h2>
-<p>变更同样是 GraphQL 对象。变更是字段发生一些改变，如更新数据库。</p>
-<pre><pre class="playpen"><code class="language-rust"># use juniper::FieldResult;
-# #[derive(juniper::GraphQLObject)] struct User { name: String }
-struct Mutations;
-
-#[juniper::object]
-impl Mutations {
-    fn signUpUser(name: String, email: String) -&gt; FieldResult&lt;User&gt; {
-        // 验证输入并存储数据
-# unimplemented!()
-    }
-}
-
-# fn main() { }
-</code></pre></pre>
+                        <h1><a class="header" href="#上下文切换" id="上下文切换">上下文切换</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../types/unions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../advanced/multiple_ops_per_request.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../servers/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../advanced/dynamic_type_system.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -224,13 +183,13 @@ impl Mutations {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../types/unions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../advanced/multiple_ops_per_request.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../servers/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../advanced/dynamic_type_system.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
