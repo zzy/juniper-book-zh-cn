@@ -1,9 +1,5 @@
 # 目录
 
-[做贡献](contributing.md)
-
-------
-
 - [介绍](README.md)
 - [快速入门](quickstart.md)
 
@@ -42,5 +38,10 @@
   - [批量操作](advanced/multiple_ops_per_request.md)
   - [上下文切换](advanced/context_switching.md)
   - [动态类型系统](advanced/dynamic_type_system.md)
+
+------
+
+[附录一 Rust 语言术语中英文对照表](rust-glossary.md)
+[附录二 做贡献](contributing.md)
 
 ------

@@ -2,7 +2,7 @@
 
 [Juniper 中文手册](https://juniper.budshome.com)包含 `Juniper` 中文文档和代码示例，源码放在 [zzy/juniper-book-zh](https://github.com/zzy/juniper-book-zh)，内容译自[官方文档](https://github.com/graphql-rust/juniper/tree/master/docs/book)。
 
-💥 **更新时间：2019-08-30**
+💥 **更新时间：2019-01-01**
 
 ------
 
@@ -47,7 +47,7 @@ cargo test
 
 ### 测试配置
 
-手册中的所有 `Rust` 代码示例在 `CI` 上编译，使用了  [skeptic](https://github.com/budziq/rust-skeptic) 库。
+手册中的所有 `Rust` 代码示例在 `CI` 上编译，使用了 [skeptic](https://github.com/budziq/rust-skeptic) 库。
 
 ## 声明
 
