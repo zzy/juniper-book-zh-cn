@@ -41,7 +41,7 @@
 
 ------
 
-[附录一 Rust 语言术语中英文对照表](rust-glossary.md)
-[附录二 做贡献](contributing.md)
+[附录一 做贡献](contributing.md)
+[附录二 Rust 语言术语中英文对照表](rust-glossary.md)
 
 ------

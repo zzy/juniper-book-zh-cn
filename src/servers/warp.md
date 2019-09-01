@@ -1,12 +1,14 @@
-# Integrating with Warp
+# Warp 集成
 
-[Warp] is a super-easy, composable, web server framework for warp speeds.
-The fundamental building block of warp is the Filter: they can be combined and composed to express rich requirements on requests. Warp is built on [Hyper] and works on
-Rust's stable channel.
+> [servers/warp.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/servers/warp.md)
+> <br />
+> commit c2f119690b683303dbabf2a8b029cff76b596728
 
-Juniper's Warp integration is contained in the [`juniper_warp`][juniper_warp] crate:
+[Warp] 是超简单、可组合、具有极快速度的 Web 服务器框架。Warp 基本构建块是过滤器：过滤器可组合表示需求多样的请求。Warp 构建在 [Hyper] 之上，运行于 Rust 稳定版。
 
-!FILENAME Cargo.toml
+Juniper 的 Warp 集成包为 [`juniper_warp`][juniper_warp]：
+
+!文件名 Cargo.toml
 
 ```toml
 [dependencies]
@@ -14,7 +16,7 @@ juniper = "0.10"
 juniper_warp = "0.1.0"
 ```
 
-Included in the source is a [small example][example] which sets up a basic GraphQL and [GraphiQL] handler.
+[GraphiQL] 基本设定和[源码实例][example]。
 
 [graphiql]: https://github.com/graphql/graphiql
 [hyper]: https://hyper.rs/

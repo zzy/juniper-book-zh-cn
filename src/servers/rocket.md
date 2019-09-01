@@ -1,12 +1,14 @@
-# Integrating with Rocket
+# Rocket 集成
 
-[Rocket] is a web framework for Rust that makes it simple to write fast web applications without sacrificing flexibility or type safety. All with minimal code. Rocket
-does not work on Rust's stable channel and instead requires the nightly
-channel.
+> [servers/rocket.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/servers/rocket.md)
+> <br />
+> commit 9623e4d32694118e68ce8706f29e2cfbc6c5b6dc
 
-Juniper's Rocket integration is contained in the [`juniper_rocket`][juniper_rocket] crate:
+[Rocket] 是使 Web 应用开发变得简单高效和类型安全的 Rust Web 框架。Rocket 运行于 Rust 开发版，不能在 Rust 稳定版上工作。
 
-!FILENAME Cargo.toml
+Juniper 的 Rocket 集成包为 [`juniper_rocket`][juniper_rocket]：
+
+!文件名 Cargo.toml
 
 ```toml
 [dependencies]
@@ -14,7 +16,7 @@ juniper = "0.10"
 juniper_rocket = "0.2.0"
 ```
 
-Included in the source is a [small example][example] which sets up a basic GraphQL and [GraphiQL] handler.
+[GraphiQL] 基本设定和[源码实例][example]。
 
 [graphiql]: https://github.com/graphql/graphiql
 [rocket]: https://rocket.rs/
