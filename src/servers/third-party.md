@@ -6,6 +6,6 @@
 
 以下几个优秀的 Rust Web 框架的 Juniper 集成包由第三方维护。
 
-- [Actix-Web](https://github.com/actix/examples/tree/master/juniper)，译者**墙裂**推荐；
+- [Actix-Web](https://github.com/actix/examples/tree/master/juniper)；
 - [Finchers](https://github.com/finchers-rs/finchers-juniper)；
 - [Tsukuyomi](https://github.com/tsukuyomi-rs/tsukuyomi/tree/master/examples/juniper)。

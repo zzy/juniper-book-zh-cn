@@ -1,6 +1,10 @@
-# Advanced Topics
+# 高阶应用
 
-The chapters below cover some more advanced scenarios.
+> [advanced/index.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/advanced/index.md)
+> <br />
+> commit a75396846d9f8930d1e07e972a91ff59308e77cf
+
+如下章节将介绍 Juniper 高阶应用场景。
 
 - [Introspection](introspection.md)
 - [Non-struct objects](non_struct_objects.md)
