@@ -1,20 +1,14 @@
-# Objects and generics
+# 对象和泛型
 
-> [advanced/non_struct_objects.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/advanced/non_struct_objects.md)
+> [advanced/objects_and_generics.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/advanced/objects_and_generics.md)
 > <br />
 > commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
 
-Yet another point where GraphQL and Rust differs is in how generics work. In
-Rust, almost any type could be generic - that is, take type parameters. In
-GraphQL, there are only two generic types: lists and non-nullables.
+GraphQL 和 Rust 的另一个差异是泛型。Rust 中，几乎任何类型都可以是泛型的——即接受类型参数。GraphQL 中，只有两种泛型类型：列表（lists）和非空值（non-nullables）。
 
-This poses a restriction on what you can expose in GraphQL from Rust: no generic
-structs can be exposed - all type parameters must be bound. For example, you can
-not make e.g. `Result<T, E>` into a GraphQL type, but you _can_ make e.g.
-`Result<User, String>` into a GraphQL type.
+这对从 Rust 向 GraphQL 暴露内容造成了限制：不能暴露泛型结构，而必须绑定类型参数。例如，你不能将 `Result<T, E>` 转换为 GraphQL 类型，但你**能够**将 `Result<User, String>` 转换为 GraphQL 类型。
 
-Let's make a slightly more compact but generic implementation of [the last
-chapter](non_struct_objects.md):
+让我们对[非结构化对象](non_struct_objects.md)中的示例做一些细小紧凑的改动，来进行泛型实现：
 
 ```rust
 # #[derive(juniper::GraphQLObject)] struct User { name: String }
@@ -58,12 +52,6 @@ impl MutationResult<ForumPost> {
 # fn main() {}
 ```
 
-Here, we've made a wrapper around `Result` and exposed some concrete
-instantiations of `Result<T, E>` as distinct GraphQL objects. The reason we
-needed the wrapper is of Rust's rules for when you can derive a trait - in this
-case, both `Result` and Juniper's internal GraphQL trait are from third-party
-sources.
+我们对 `Result` 做了包装，并暴露 `Result<T, E>` 的具体实例为不同的 GraphQL 对象。我们需要包装的原因是 Rust 具有派生特性的规则——本例中，`Result` 和 Juniper 的内部 GraphQL 特性都来自第三方。
 
-Because we're using generics, we also need to specify a name for our
-instantiated types. Even if Juniper _could_ figure out the name,
-`MutationResult<User>` wouldn't be a valid GraphQL type name.
+因为我们使用泛型，所以还需要为实例化的类型指定一个名字。即使 Juniper **能够**找出名字，`MutationResult<User>` 也不是有效的 GraphQL 类型名。

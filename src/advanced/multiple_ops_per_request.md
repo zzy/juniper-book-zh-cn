@@ -1,14 +1,18 @@
-# Multiple operations per request
+# 批量操作请求
 
-The GraphQL standard generally assumes there will be one server request for each client operation you want to perform (such as a query or mutation). This is conceptually simple but has the potential to be inefficent.
+> [advanced/multiple_ops_per_request.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/advanced/multiple_ops_per_request.md)
+> <br />
+> commit 9623e4d32694118e68ce8706f29e2cfbc6c5b6dc
 
-Some client libraries such as [apollo-link-batch-http](https://www.apollographql.com/docs/link/links/batch-http.html) have added the ability to batch operations in a single HTTP request to save network round-trips and potentially increase performance. There are some [tradeoffs](https://blog.apollographql.com/batching-client-graphql-queries-a685f5bcd41b) that should be considered before batching requests.
+GraphQL 标准通常假定，每个客户端操作（例如查询或变更）都有一次服务器请求。这在概念上很简单，但有可能效率低下。
 
-Juniper's server integration crates support multiple operations in a single HTTP request using JSON arrays. This makes them compatible with client libraries that support batch operations without any special configuration.
+一些客户端库——如[apollo-link-batch-http](https://www.apollographql.com/docs/link/links/batch-http.html)，已经在单个 HTTP 请求中添加了批量操作请求的功能，以便于节省网络往返请求并提高性能。当然，在批量操作请求之前，应该进行[权衡](https://blog.apollographql.com/batching-client-graphql-queries-a685f5bcd41b)。
 
-Server integration crates maintained by others are **not required** to support batch requests. Batch requests aren't part of the official GraphQL specification.
+Juniper 服务器集成包使用 JSON 数组支持单个 HTTP 请求中的批量操作请求，这样不需要任何特殊配置就能兼容支持客户端库的批量操作请求。
 
-Assuming an integration supports batch requests, for the following GraphQL query:
+第三方维护的服务器集成包**不需要**支持批量操作请求，批量操作请求不属于 GraphQL 官方规范。
+
+假定某个服务器集成支持批操作请求，现执行如下 GraphQL 查询：
 
 ```graphql
 {
@@ -18,7 +22,7 @@ Assuming an integration supports batch requests, for the following GraphQL query
 }
 ```
 
-The json data to POST to the server for an individual request would be:
+单个请求 POST 到服务器的 json 数据是：
 
 ```json
 {
@@ -26,7 +30,7 @@ The json data to POST to the server for an individual request would be:
 }
 ```
 
-And the response would be of the form:
+单个请求响应数据如下：
 
 ```json
 {
@@ -38,7 +42,7 @@ And the response would be of the form:
 }
 ```
 
-If you wanted to run the same query twice in a single HTTP request, the batched json data to POST to the server would be:
+如果你想在一个 HTTP 请求中运行两次相同的查询，那么要 POST 到服务器的批量 JSON 数据是：
 
 ```json
 [
@@ -51,7 +55,7 @@ If you wanted to run the same query twice in a single HTTP request, the batched 
 ]
 ```
 
-And the response would be of the form:
+批量操作请求响应数据如下：
 
 ```json
 [
