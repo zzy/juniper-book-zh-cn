@@ -6,7 +6,7 @@
 
 如下章节将介绍 Juniper 高阶应用场景。
 
-- [Introspection](introspection.md)
-- [Non-struct objects](non_struct_objects.md)
-- [Objects and generics](objects_and_generics.md)
-- [Multiple operations per request](multiple_ops_per_request.md)
+- [内省](introspection.md)
+- [非结构体对象](non_struct_objects.md)
+- [对象和泛型](objects_and_generics.md)
+- [批量操作](multiple_ops_per_request.md)

@@ -33,8 +33,8 @@
   - [非结构体对象](advanced/non_struct_objects.md)
   - [对象和泛型](advanced/objects_and_generics.md)
   - [批量操作](advanced/multiple_ops_per_request.md)
-  - [上下文切换](advanced/context_switching.md)
-  - [动态类型系统](advanced/dynamic_type_system.md)
+  <!-- - [上下文切换](advanced/context_switching.md)
+  - [动态类型系统](advanced/dynamic_type_system.md) -->
 
 ------
 

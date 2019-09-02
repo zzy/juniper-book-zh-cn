@@ -1,4 +1,8 @@
-# Non-struct objects
+# 非结构化对象
+
+> [advanced/non_struct_objects.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/advanced/non_struct_objects.md)
+> <br />
+> commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
 
 Up until now, we've only looked at mapping structs to GraphQL objects. However,
 any Rust type can be mapped into a GraphQL object. In this chapter, we'll look
