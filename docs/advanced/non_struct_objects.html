@@ -164,12 +164,8 @@
 <br />
 commit 29025e6cae4a249fa56017dcf16b95ee4e89363e</p>
 </blockquote>
-<p>Up until now, we’ve only looked at mapping structs to GraphQL objects. However,
-any Rust type can be mapped into a GraphQL object. In this chapter, we’ll look
-at enums, but traits will work too - they don’t <em>have</em> to be mapped into GraphQL
-interfaces.</p>
-<p>Using <code>Result</code>-like enums can be a useful way of reporting e.g. validation
-errors from a mutation:</p>
+<p>到目前为止，我们只介绍了结构化数据到 GraphQL 对象的映射。实际上，任何 Rust 类型都可以映射到 GraphQL 对象中。本章中，我们将介绍枚举（enums），请注意枚举特性——枚举<strong>不必</strong>映射到 GraphQL 接口即可使用。</p>
+<p>利用类似 <code>Result</code> 的枚举报告错误信息是常用的方式，例如报告变更时的验证错误：</p>
 <pre><pre class="playpen"><code class="language-rust"># #[derive(juniper::GraphQLObject)] struct User { name: String }
 
 #[derive(juniper::GraphQLObject)]
@@ -203,16 +199,8 @@ impl SignUpResult {
 
 # fn main() {}
 </code></pre></pre>
-<p>Here, we use an enum to decide whether a user’s input data was valid or not, and
-it could be used as the result of e.g. a sign up mutation.</p>
-<p>While this is an example of how you could use something other than a struct to
-represent a GraphQL object, it’s also an example on how you could implement
-error handling for “expected” errors - errors like validation errors. There are
-no hard rules on how to represent errors in GraphQL, but there are
-<a href="https://github.com/facebook/graphql/issues/117#issuecomment-170180628">some</a>
-<a href="https://github.com/graphql/graphql-js/issues/560#issuecomment-259508214">comments</a>
-from one of the authors of GraphQL on how they intended “hard” field errors to
-be used, and how to model expected errors.</p>
+<p>我们使用枚举来决定用户输入的数据是否有效，枚举可以作为返回结果。例如，注册（GraphQL 变更）的结果信息。</p>
+<p>虽然这是关于如何使用结构化数据之外的 Rust 类型来描述 GraphQL 对象的示例，但同时也是一个关于如何为<code>“预期”错误</code>(如验证错误)实现错误处理的示例。对于如何在 GraphQL 中描述错误，Juniper 并没有严格的规则。对如何设计“硬”字段错误以及如何进行预期错误建模，GraphQL 的一位作者提出了一些意见：<a href="https://github.com/facebook/graphql/issues/117#issuecomment-170180628">客户端错误验证</a>、<a href="https://github.com/graphql/graphql-js/issues/560#issuecomment-259508214">管理自定义用户错误的最佳方法</a>。</p>
 
                     </main>
 

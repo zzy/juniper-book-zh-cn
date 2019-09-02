@@ -1,5 +1,9 @@
 # Objects and generics
 
+> [advanced/non_struct_objects.md](https://github.com/graphql-rust/juniper/blob/master/docs/book/content/advanced/non_struct_objects.md)
+> <br />
+> commit 29025e6cae4a249fa56017dcf16b95ee4e89363e
+
 Yet another point where GraphQL and Rust differs is in how generics work. In
 Rust, almost any type could be generic - that is, take type parameters. In
 GraphQL, there are only two generic types: lists and non-nullables.
