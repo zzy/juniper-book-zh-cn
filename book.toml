@@ -9,7 +9,7 @@ multilingual = true
 build-dir = "docs"
 
 [output.html]
-theme = "src/theme"
+theme = "theme"
 # default-theme = "rust"
 curly-quotes = true
 mathjax-support = true
