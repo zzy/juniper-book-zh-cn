@@ -12,10 +12,20 @@ _Juniper_ 使得以 Rust 语言编写类型安全且速度惊人的 GraphQL 服�
 
 Juniper 不包含 Web 服务器，仅提供了构建快，使得其与已有服务器的集成简单明了。Juniper 可选地为 [Hyper][hyper]、[Iron][iron]、[Rocket]，以及 [Warp][warp]等框架提供了预构建集成，并嵌入了 [Graphiql][graphiql]，以便于调试。
 
-_**译者注：**_ 对于 Juniper 团队没有提供预集成的 Web 框架，如 [actix-web]，其构建集成也很简单，[actix-web] 用户提供了完整集成实例。
-
 - [Cargo crate](https://crates.io/crates/juniper)
 - [API Reference][docsrs]
+
+_**译者注：**_ 基于 actix-web + juniper + diesel 构建 GraphQL 服务器的模板代码，放置在 github 仓库 [actix-graphql-react](https://github.com/zzy/actix-graphql-react)，部署在[演示站点](https://cms.budshome.com/graphql)。所用技术包括：
+
+- [Rust](https://www.rust-lang.org/zh-CN)
+- [actix-web](https://crates.io/crates/actix-web) - Web server
+- [juniper](https://crates.io/crates/juniper) - GraphQL server
+- [diesel](https://crates.io/crates/diesel) - ORM
+- [PostgreSQL](https://postgresql.org) - Database
+- [jsonwebtoken](https://crates.io/crates/jsonwebtoken) - JSON Web Token
+- [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) - GraphQL UI
+
+💥 **更新时间：2020-03-14**
 
 ## 特点
 

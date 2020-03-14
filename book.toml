@@ -11,7 +11,7 @@ build-dir = "docs"
 
 [output.html]
 theme = "theme"
-git_repository_url = "https://github.com/zzy/juniper-book-zh"
+git-repository-url = "https://github.com/zzy/juniper-book-zh"
 # default-theme = "rust"
 curly-quotes = true
 mathjax-support = true
