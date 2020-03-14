@@ -14,7 +14,7 @@
 
 ## 状态
 
-- 对照源码位置：https://github.com/graphql-rust/juniper/tree/master/docs/book/content
+- 对照源码位置：[https://github.com/graphql-rust/juniper/tree/master/docs/book/content](https://github.com/graphql-rust/juniper/tree/master/docs/book/content)
 - 每章翻译开头都带有官方链接和 commit hash，若发现与官方不一致，欢迎 Issue 或 PR :bug:
 
 ## 做贡献
