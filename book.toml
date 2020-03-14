@@ -1,6 +1,7 @@
 [book]
 title = "Juniper - Rust 语言的 GraphQL 服务器"
 authors = ["zzy"]
+language = "zh"
 description = " Juniper 中文手册，一个用于 Rust 语言的 GraphQL 服务器库。"
 src = "src"
 multilingual = true
@@ -10,10 +11,10 @@ build-dir = "docs"
 
 [output.html]
 theme = "theme"
+git_repository_url = "https://github.com/zzy/juniper-book-zh"
 # default-theme = "rust"
 curly-quotes = true
 mathjax-support = true
-# git_repository_url = "https://github.com/zzy/juniper-book-zh"
 
 [output.html.playpen]
 editable = true
