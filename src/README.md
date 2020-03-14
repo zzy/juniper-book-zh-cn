@@ -15,18 +15,6 @@ Juniper 不包含 Web 服务器，仅提供了构建快，使得其与已有服�
 - [Cargo crate](https://crates.io/crates/juniper)
 - [API Reference][docsrs]
 
-_**译者注：**_ 基于 actix-web + juniper + diesel 构建 GraphQL 服务器的模板代码，放置在 github 仓库 [actix-graphql-react](https://github.com/zzy/actix-graphql-react)，部署在[演示站点](https://cms.budshome.com/graphql)。所用技术包括：
-
-- [Rust](https://www.rust-lang.org/zh-CN)
-- [actix-web](https://crates.io/crates/actix-web) - Web server
-- [juniper](https://crates.io/crates/juniper) - GraphQL server
-- [diesel](https://crates.io/crates/diesel) - ORM
-- [PostgreSQL](https://postgresql.org) - Database
-- [jsonwebtoken](https://crates.io/crates/jsonwebtoken) - JSON Web Token
-- [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) - GraphQL UI
-
-💥 **更新时间：2020-03-14**
-
 ## 特点
 
 Juniper 根据 [GraphQL 规范定义][graphql_spec]支持完整的 GraphQL 查询语言，包括：接口、联合、模式内省，以及验证。但是不支持模式语言。
@@ -53,6 +41,22 @@ Juniper 与一些较常见的 Rust 库进行了自动集成，使构建模式变
 ## API 稳定性
 
 Juniper 还未发布 1.0 版本，部分 API 稳定性可能不够成熟。
+
+## 译者注
+
+[Juniper 中文手册](https://juniper.budshome.com)包含 `Juniper` 中文文档和代码示例，源码放在 [zzy/juniper-book-zh](https://github.com/zzy/juniper-book-zh)，内容译自[官方文档](https://github.com/graphql-rust/juniper/tree/master/docs/book)。
+
+基于 actix-web + juniper + diesel 构建 GraphQL 服务器的模板代码，放置在 github 仓库 [actix-graphql-react](https://github.com/zzy/actix-graphql-react)，部署在[演示站点](https://cms.budshome.com/graphql)。所用技术包括：
+
+- [Rust](https://www.rust-lang.org/zh-CN)
+- [actix-web](https://crates.io/crates/actix-web) - Web server
+- [juniper](https://crates.io/crates/juniper) - GraphQL server
+- [diesel](https://crates.io/crates/diesel) - ORM
+- [PostgreSQL](https://postgresql.org) - Database
+- [jsonwebtoken](https://crates.io/crates/jsonwebtoken) - JSON Web Token
+- [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) - GraphQL UI
+
+💥 **更新时间：2020-03-14**
 
 [graphql]: http://graphql.org
 [graphiql]: https://github.com/graphql/graphiql
