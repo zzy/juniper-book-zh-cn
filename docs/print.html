@@ -181,17 +181,6 @@ commit 9623e4d32694118e68ce8706f29e2cfbc6c5b6dc</p>
 <li><a href="https://crates.io/crates/juniper">Cargo crate</a></li>
 <li><a href="https://docs.rs/juniper">API Reference</a></li>
 </ul>
-<p><em><strong>译者注：</strong></em> 基于 actix-web + juniper + diesel 构建 GraphQL 服务器的模板代码，放置在 github 仓库 <a href="https://github.com/zzy/actix-graphql-react">actix-graphql-react</a>，部署在<a href="https://cms.budshome.com/graphql">演示站点</a>。所用技术包括：</p>
-<ul>
-<li><a href="https://www.rust-lang.org/zh-CN">Rust</a></li>
-<li><a href="https://crates.io/crates/actix-web">actix-web</a> - Web server</li>
-<li><a href="https://crates.io/crates/juniper">juniper</a> - GraphQL server</li>
-<li><a href="https://crates.io/crates/diesel">diesel</a> - ORM</li>
-<li><a href="https://postgresql.org">PostgreSQL</a> - Database</li>
-<li><a href="https://crates.io/crates/jsonwebtoken">jsonwebtoken</a> - JSON Web Token</li>
-<li><a href="https://github.com/prisma-labs/graphql-playground">GraphQL Playground</a> - GraphQL UI</li>
-</ul>
-<p>💥 <strong>更新时间：2020-03-14</strong></p>
 <h2><a class="header" href="#特点" id="特点">特点</a></h2>
 <p>Juniper 根据 <a href="http://facebook.github.io/graphql">GraphQL 规范定义</a>支持完整的 GraphQL 查询语言，包括：接口、联合、模式内省，以及验证。但是不支持模式语言。</p>
 <p>Juniper 作为 Rust 语言的 GraphQL 库，默认构建非空类型。类型为 <code>Vec&lt;Episode&gt;</code> 的字段将被转换为 <code>[Episode!]!</code>，相应的 Rust 语言类型则为 <code>Option&lt;Vec&lt;Option&lt;Episode&gt;&gt;&gt;</code>。</p>
@@ -212,6 +201,19 @@ commit 9623e4d32694118e68ce8706f29e2cfbc6c5b6dc</p>
 </ul>
 <h2><a class="header" href="#api-稳定性" id="api-稳定性">API 稳定性</a></h2>
 <p>Juniper 还未发布 1.0 版本，部分 API 稳定性可能不够成熟。</p>
+<h2><a class="header" href="#译者注" id="译者注">译者注</a></h2>
+<p><a href="https://juniper.budshome.com">Juniper 中文手册</a>包含 <code>Juniper</code> 中文文档和代码示例，源码放在 <a href="https://github.com/zzy/juniper-book-zh">zzy/juniper-book-zh</a>，内容译自<a href="https://github.com/graphql-rust/juniper/tree/master/docs/book">官方文档</a>。</p>
+<p>基于 actix-web + juniper + diesel 构建 GraphQL 服务器的模板代码，放置在 github 仓库 <a href="https://github.com/zzy/actix-graphql-react">actix-graphql-react</a>，部署在<a href="https://cms.budshome.com/graphql">演示站点</a>。所用技术包括：</p>
+<ul>
+<li><a href="https://www.rust-lang.org/zh-CN">Rust</a></li>
+<li><a href="https://crates.io/crates/actix-web">actix-web</a> - Web server</li>
+<li><a href="https://crates.io/crates/juniper">juniper</a> - GraphQL server</li>
+<li><a href="https://crates.io/crates/diesel">diesel</a> - ORM</li>
+<li><a href="https://postgresql.org">PostgreSQL</a> - Database</li>
+<li><a href="https://crates.io/crates/jsonwebtoken">jsonwebtoken</a> - JSON Web Token</li>
+<li><a href="https://github.com/prisma-labs/graphql-playground">GraphQL Playground</a> - GraphQL UI</li>
+</ul>
+<p>💥 <strong>更新时间：2020-03-14</strong></p>
 <h1><a class="header" href="#快速入门" id="快速入门">快速入门</a></h1>
 <blockquote>
 <p><a href="https://github.com/graphql-rust/juniper/blob/master/docs/book/content/quickstart.md">quickstart.md</a>
