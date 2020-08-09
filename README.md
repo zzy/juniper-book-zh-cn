@@ -64,7 +64,7 @@ cargo test
 
 水平有限，错漏难免，欢迎指教；或请发 [issue到GitHub](https://github.com/zzy/juniper-book-zh)；或者直接联系。
 
-> 电子邮箱：linshi@budshome.com；微信：cd-zzy；QQ：9809920。
+> 电子邮箱：linshi@budshome.com；微信：budshome；QQ：9809920。
 
 感谢`graphql-rust/juniper 团队`的无私奉献。
 
