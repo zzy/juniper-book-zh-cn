@@ -1,6 +1,6 @@
 # Juniper 中文手册（同步最新开发版）
 
-[Juniper 中文手册（https://juniper.budshome.com）](https://juniper.budshome.com)包含 `Juniper` 中文文档和代码示例，源码放在 [zzy/juniper-book-zh](https://github.com/zzy/juniper-book-zh)，内容译自[官方文档](https://github.com/graphql-rust/juniper/tree/master/docs/book)。
+[Juniper 中文手册（https://books.budshome.com/juniper）](https://books.budshome.com/juniper)包含 `Juniper` 中文文档和代码示例，源码放在 [zzy/juniper-book-zh](https://github.com/zzy/juniper-book-zh)，内容译自[官方文档](https://github.com/graphql-rust/juniper/tree/master/docs/book)。
 
 基于 actix-web + juniper + diesel 构建 GraphQL 服务器的模板代码，放置在 github 仓库 [actix-graphql-react](https://github.com/zzy/actix-graphql-react)，部署在[演示站点](https://cms.budshome.com/graphql)。所用技术包括：
 
